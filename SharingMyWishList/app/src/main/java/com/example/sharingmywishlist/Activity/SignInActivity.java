@@ -99,12 +99,13 @@ public class SignInActivity extends AppCompatActivity {
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if (response.isSuccessful()) {
 
-                    // log
-                    Log.d(TAG, "Sign In Succeed! " + "userId : " + userId);
-
                     // accessToken
                     accessToken = response.body().getAccessToken();
-                    Toast.makeText(SignInActivity.this, "Login succeed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Sign In succeed!", Toast.LENGTH_SHORT).show();
+
+                    // log
+                    Log.d(TAG, "Sign In Succeed! " + "userId : " + userId + ", accessToken : " + accessToken);
+
 
                     // Start MainActivity
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -119,7 +120,7 @@ public class SignInActivity extends AppCompatActivity {
                 // log
                 Log.d(TAG, "Sign In failed..");
 
-                Toast.makeText(SignInActivity.this, "Login failed..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInActivity.this, "Sign In failed..", Toast.LENGTH_SHORT).show();
             }
         });
     }
