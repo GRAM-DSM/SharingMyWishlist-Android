@@ -9,16 +9,17 @@ import com.example.retrofitloginex.response.SignUpResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface RetrofitAPI {
 
     // Sign In
-    @POST("/signin")
+    @POST("/auth/signin")
     Call<SignInResponse> signin(@Body SignInRequest request);
 
     // Sign Up
-    @POST("/signup")
-    Call<SignUpResponse> signup(@Body SignUpRequest request);
+    @POST("/auth/signup")
+    Call<Void> signup(@Body SignUpRequest request);
 
 }

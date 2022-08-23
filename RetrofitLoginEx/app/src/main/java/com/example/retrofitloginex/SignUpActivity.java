@@ -27,8 +27,8 @@ public class SignUpActivity extends AppCompatActivity {
     private RetrofitAPI retrofitAPI;
 
     // EditText
-    private EditText et_signIn_name; // 이름
-    private EditText et_signIn_email; // 이메일
+    private EditText et_signIn_nickName; // 닉네임
+    private EditText et_signIn_ID; // ID
     private EditText et_signIn_password; // 비밀번호
 
     // Button
@@ -63,8 +63,8 @@ public class SignUpActivity extends AppCompatActivity {
         btn_signUp_signUp = findViewById(R.id.btn_signUp_signUp); // Sign Up
 
         // EditText
-        et_signIn_name = findViewById(R.id.et_signIn_name); // 이름
-        et_signIn_email = findViewById(R.id.et_signIn_email); // 이메일
+        et_signIn_nickName = findViewById(R.id.et_signIn_nickName); // 닉네임
+        et_signIn_ID = findViewById(R.id.et_signIn_userId); // ID
         et_signIn_password = findViewById(R.id.et_signIn_password); // 비밀번호
     }
 
@@ -73,8 +73,8 @@ public class SignUpActivity extends AppCompatActivity {
     private void initSignUpButtonClickListener() {
 
         // 데이터
-        String name = et_signIn_name.getText().toString(); // 이름
-        String email = et_signIn_email.getText().toString(); // 이메일
+        String nickName = et_signIn_nickName.getText().toString(); // 닉네임
+        String userId = et_signIn_ID.getText().toString(); // ID
         String password = et_signIn_password.getText().toString(); // 비밀번호
 
         btn_signUp_signUp.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 // Start Sign Up
-                startSignUp(new SignUpRequest(name, email, password));
+                startSignUp(new SignUpRequest(userId, password, nickName));
             }
         });
     }
@@ -90,15 +90,15 @@ public class SignUpActivity extends AppCompatActivity {
 
     // Start Sign Up
     private void startSignUp(SignUpRequest data) {
-        retrofitAPI.signup(data).enqueue(new Callback<SignUpResponse>() {
+        retrofitAPI.signup(data).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d(TAG, "Sign Up Request Succeed");
                 Toast.makeText(SignUpActivity.this, "Sign Up Succeed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Log.e(TAG, "Sign Up Request Failed", t);
 
             }

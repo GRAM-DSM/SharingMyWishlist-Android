@@ -30,11 +30,11 @@
                 android:layout_margin="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signIn_name"
+                    android:id="@+id/et_signIn_nickName"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@android:color/transparent"
-                    android:hint="@string/signUp_userName"
+                    android:hint="@string/signUp_nickName"
                     android:inputType="textPersonName"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -45,11 +45,11 @@
                 android:layout_margin="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signIn_email"
+                    android:id="@+id/et_signIn_userId"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@android:color/transparent"
-                    android:hint="@string/signUp_email"
+                    android:hint="@string/signUp_userId"
                     android:inputType="textEmailAddress"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
