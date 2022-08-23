@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RetrofitLoginEx</string>
+
+    <string name="signUp">Sign Up</string>
+    <string name="signIn">Sign In</string>
+
+    <!-- Sign Up -->
+    <string name="signUp_userName">Username</string>
+    <string name="signUp_email">Email</string>
+    <string name="signUp_password">Password</string>
+</resources>
