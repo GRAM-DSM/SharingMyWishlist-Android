@@ -1,4 +1,4 @@
-package com.example.sharingmywishlist;
+package com.example.sharingmywishlist.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
-import com.example.sharingmywishlist.API.SignUpRequest;
+import com.example.sharingmywishlist.Request.SignUpRequest;
 import com.example.sharingmywishlist.databinding.ActivitySignUpBinding;
 
 import retrofit2.Call;
@@ -96,7 +94,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "Sign Up Succeed! " + "userId : " + userId);
-                    Toast.makeText(SignUpActivity.this, "Sign Up Succeed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Sign up succeed, Please log in", Toast.LENGTH_SHORT).show();
                 }
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
@@ -106,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.e(TAG, "Sign Up Failed", t);
-                Toast.makeText(SignUpActivity.this, "Sign Up Failed..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "Sign up failed..", Toast.LENGTH_SHORT).show();
             }
         });
     }

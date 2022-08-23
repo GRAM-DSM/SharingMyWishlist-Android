@@ -1,8 +1,10 @@
-package com.example.sharingmywishlist;
+package com.example.sharingmywishlist.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.sharingmywishlist.R;
 
 public class MainActivity extends AppCompatActivity {
 

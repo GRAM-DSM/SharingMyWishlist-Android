@@ -1,4 +1,4 @@
-package com.example.sharingmywishlist.API;
+package com.example.sharingmywishlist.Request;
 
 public class SignUpRequest {
 
