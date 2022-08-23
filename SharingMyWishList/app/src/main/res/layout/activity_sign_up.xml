@@ -29,7 +29,7 @@
                 android:layout_margin="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signIn_nickName"
+                    android:id="@+id/et_signUp_nickName"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@android:color/transparent"
@@ -44,7 +44,7 @@
                 android:layout_margin="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signIn_userId"
+                    android:id="@+id/et_signUp_userId"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@android:color/transparent"
@@ -59,7 +59,7 @@
                 android:layout_margin="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signIn_password"
+                    android:id="@+id/et_signUp_password"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@android:color/transparent"
@@ -80,7 +80,7 @@
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_signIn_goBackToSignIn"
+                android:id="@+id/btn_signUp_goToSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_margin="8dp"

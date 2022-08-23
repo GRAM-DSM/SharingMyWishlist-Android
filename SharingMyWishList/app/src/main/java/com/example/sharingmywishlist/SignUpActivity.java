@@ -25,14 +25,6 @@ public class SignUpActivity extends AppCompatActivity {
     private final static String TAG = "SignUpActivity";
     // Binding
     private ActivitySignUpBinding binding;
-    // EditText
-    private EditText et_signIn_nickName; // 닉네임
-    private EditText et_signIn_userId; // ID
-    private EditText et_signIn_password; // 비밀번호
-
-    // Button
-    private Button btn_signUp_signUp; // 회원가입
-    private Button btn_signIn_goBackToSignIn; // 로그인으로 돌아가기
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +35,27 @@ public class SignUpActivity extends AppCompatActivity {
         // btn_signUp_signUp ClickListener
         signUpButtonClickListener();
 
+        // btn_signUp_goToSignIn ClickListener
+        goToSignInClickListener();
+    }
 
+
+    // goToSignInClickListener
+    private void goToSignInClickListener() {
+
+        // log
+        Log.d(TAG, "goToSignInClickListener() has called");
+
+        binding.btnSignUpGoToSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Intent
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
 
@@ -71,9 +83,9 @@ public class SignUpActivity extends AppCompatActivity {
         Log.d(TAG, "signUp() has called");
 
         // 값을 담을 String
-        String userId = binding.etSignInUserId.getText().toString(); // userId
-        String password = binding.etSignInPassword.getText().toString(); // password
-        String nickName = binding.etSignInNickName.getText().toString(); // nickName
+        String userId = binding.etSignUpUserId.getText().toString(); // userId
+        String password = binding.etSignUpPassword.getText().toString(); // password
+        String nickName = binding.etSignUpNickName.getText().toString(); // nickName
 
         SignUpRequest signUpRequest = new SignUpRequest(userId, password, nickName);
 
