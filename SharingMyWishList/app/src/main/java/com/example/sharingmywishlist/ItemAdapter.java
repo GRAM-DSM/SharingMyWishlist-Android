@@ -1,5 +1,6 @@
 package com.example.sharingmywishlist;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         // CheckBox
         holder.chk_item_clear.setChecked(dataSet.get(position).isClear()); // clear
+
+        // log
+        Log.d(TAG, "title : " + dataSet.get(position).getTitle()); // title
+        Log.d(TAG, "contents : " + dataSet.get(position).getContents()); // contents
+        Log.d(TAG, "color : " + dataSet.get(position).getColor()); // color
+        Log.d(TAG, "clear : " + dataSet.get(position).isClear()); // clear
     }
 
     @Override

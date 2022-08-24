@@ -10,6 +10,7 @@ import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
 import com.example.sharingmywishlist.ItemAdapter;
 import com.example.sharingmywishlist.R;
+import com.example.sharingmywishlist.Response.SignInResponse;
 import com.example.sharingmywishlist.Response.WishAllResponse;
 import com.example.sharingmywishlist.databinding.ActivityMainBinding;
 
