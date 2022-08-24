@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:background="@color/bg_nor">
 
@@ -32,7 +32,7 @@
             android:layout_margin="4dp"
             android:ellipsize="end"
             android:gravity="start"
-            android:maxLines="4"
+            android:maxLines="5"
             android:padding="4dp"
             android:text="Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here Content Here "
             android:textColor="@color/dark_gray"
