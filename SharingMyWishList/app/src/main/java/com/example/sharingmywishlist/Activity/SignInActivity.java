@@ -25,7 +25,7 @@ public class SignInActivity extends AppCompatActivity {
     private final static String TAG = "SignInActivity";
 
     // accessToken
-    private static String accessToken;
+    public static String accessToken;
 
     // Binding
     private ActivitySignInBinding binding;
