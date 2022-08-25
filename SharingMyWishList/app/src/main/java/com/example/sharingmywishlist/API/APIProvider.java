@@ -8,7 +8,7 @@ public class APIProvider {
     // Retrofit
     private static Retrofit retrofit;
     // BaseURL
-    private static String BASE_URL = "http://13.209.22.117:8087";
+    private static String BASE_URL = "http://10.156.147.133:8087";
 
     // Retrofit의 인스턴스 반환 메서드
     public static Retrofit getInstance() {

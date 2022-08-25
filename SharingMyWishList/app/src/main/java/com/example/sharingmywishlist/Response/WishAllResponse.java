@@ -22,9 +22,6 @@ public class WishAllResponse {
     // color
     String color;
 
-    // comments
-    List<CommentResponse> comments;
-
     public int getId() {
         return id;
     }
@@ -47,9 +44,5 @@ public class WishAllResponse {
 
     public String getColor() {
         return color;
-    }
-
-    public List<CommentResponse> getComments() {
-        return comments;
     }
 }

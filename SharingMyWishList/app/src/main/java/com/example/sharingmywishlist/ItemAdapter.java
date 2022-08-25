@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -79,6 +80,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
             // CheckBox
             chk_item_clear = itemView.findViewById(R.id.chk_item_clear); // clear
+
+            // clear Listener
+            chkClearListener();
         }
+
+
+        // clear Listener
+        private void chkClearListener() {
+            chk_item_clear.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+
+                }
+            });
+        }
+
     }
 }
