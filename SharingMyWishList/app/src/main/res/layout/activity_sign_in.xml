@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@android:color/transparent"
-                    android:hint="@string/signUp_userId"
+                    android:hint="@string/signIn_userId"
                     android:inputType="textEmailAddress"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@android:color/transparent"
-                    android:hint="@string/signUp_password"
+                    android:hint="@string/signIn_password"
                     android:inputType="textPassword"
                     android:textSize="16sp" />
 

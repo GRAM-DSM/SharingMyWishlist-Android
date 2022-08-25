@@ -26,21 +26,13 @@ public class SignInActivity extends AppCompatActivity {
     // TAG
     private final static String TAG = "SignInActivity";
     // accessToken
-<<<<<<< Updated upstream
     public static String accessToken;
-=======
-<<<<<<< Updated upstream
-    private static String accessToken;
->>>>>>> Stashed changes
 
-=======
-    public static String accessToken;
     // Context
     private Context context;
     // SharedPreference
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
->>>>>>> Stashed changes
     // Binding
     private ActivitySignInBinding binding;
 
@@ -60,11 +52,6 @@ public class SignInActivity extends AppCompatActivity {
         // Auto SignIn
         autoSignIn();
 
-        // TESTLOG
-        Log.d(TAG, "junj auto Login : " + preferences.getBoolean("autoSignIn", false));
-        Log.d(TAG, "junj userId : " + preferences.getString("userId", "empty"));
-        Log.d(TAG, "junj password : " + preferences.getString("password", "empty"));
-
         // Sign In Button ClickListener
         signInButtonClickListener();
 
@@ -76,10 +63,26 @@ public class SignInActivity extends AppCompatActivity {
     // Auto Sign In
     private void autoSignIn() {
 
-        // get Auto SignIn
-        if (preferences.getBoolean("autoSignIn", false)) {
+        // Auto Sign In
+        boolean autoSIgnIn = preferences.getBoolean("autoSignIn", false);
 
+        // User Information
+        String userId = preferences.getString("userId", null);
+        String password = preferences.getString("password", null);
+
+        // TESTLOG
+        Log.d(TAG, "junj auto Sign In : " + autoSIgnIn);
+        Log.d(TAG, "junj userId : " + userId);
+        Log.d(TAG, "junj password : " + password);
+
+        // Start auto sign in if auto sign in allowed
+        if (autoSIgnIn) {
+
+            // log
             Log.d(TAG, "autoSignIn called");
+
+            // start sign In
+            signIn(userId, password);
         }
     }
 

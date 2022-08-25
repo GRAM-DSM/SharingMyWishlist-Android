@@ -1,11 +1,19 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">RetrofitLoginEx</string>
 
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
+    <string name="signOut">Sign Out</string>
+
+    <!-- MainActivity -->
 
     <!-- Sign Up -->
     <string name="signUp_userId">ID</string>
     <string name="signUp_nickName">Nickname</string>
     <string name="signUp_password">Password</string>
+
+    <!-- Sign In -->
+    <string name="signIn_userId">ID</string>
+    <string name="signIn_password">Password</string>
+
 </resources>
