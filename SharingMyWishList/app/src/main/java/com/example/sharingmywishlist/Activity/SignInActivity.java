@@ -180,8 +180,11 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
 
-                // log
+                // log 
                 Log.d(TAG, "Sign In failed..");
+
+                // Remove Editor
+                editor.clear();
 
                 Toast.makeText(SignInActivity.this, "Sign In failed..", Toast.LENGTH_SHORT).show();
             }
