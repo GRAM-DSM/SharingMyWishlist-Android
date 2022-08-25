@@ -2,7 +2,9 @@ package com.example.sharingmywishlist.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,10 +25,14 @@ public class SignInActivity extends AppCompatActivity {
 
     // TAG
     private final static String TAG = "SignInActivity";
-
     // accessToken
-    private static String accessToken;
+    public static String accessToken;
 
+    // Context
+    private Context context;
+    // SharedPreference
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     // Binding
     private ActivitySignInBinding binding;
 
@@ -36,11 +42,48 @@ public class SignInActivity extends AppCompatActivity {
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // context
+        context = getApplicationContext();
+
+        // SharedPreferences
+        preferences = context.getSharedPreferences("signIn", Context.MODE_PRIVATE);
+        editor = preferences.edit(); // Editor
+
+        // Auto SignIn
+        autoSignIn();
+
         // Sign In Button ClickListener
         signInButtonClickListener();
 
         // Go To Sign Up ClickListener
         goToSignUpClickListener();
+    }
+
+
+    // Auto Sign In
+    private void autoSignIn() {
+
+        // Auto Sign In
+        boolean autoSIgnIn = preferences.getBoolean("autoSignIn", false);
+
+        // User Information
+        String userId = preferences.getString("userId", null);
+        String password = preferences.getString("password", null);
+
+        // TESTLOG
+        Log.d(TAG, "junj auto Sign In : " + autoSIgnIn);
+        Log.d(TAG, "junj userId : " + userId);
+        Log.d(TAG, "junj password : " + password);
+
+        // Start auto sign in if auto sign in allowed
+        if (autoSIgnIn) {
+
+            // log
+            Log.d(TAG, "autoSignIn called");
+
+            // start sign In
+            signIn(userId, password);
+        }
     }
 
 
@@ -73,22 +116,42 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                // 값을 담아 전달할 String
+                String userId = binding.etSignInUserId.getText().toString(); // userId
+                String password = binding.etSignInPassword.getText().toString(); // password
+                
+                // Set Sign In to Automatically
+                if (binding.chkSignInKeepLoggedIn.isChecked()) {
+
+                    Log.d(TAG, "signInButtonClickListener true");
+
+                    // Put Auto Sign In
+                    editor.putBoolean("autoSignIn", true);
+
+                    // Put user Information
+                    editor.putString("userId", userId); // userId
+                    editor.putString("password", password); // password
+
+                    // commit
+                    editor.commit();
+                }
+
                 // Sign In
-                signIn();
+                signIn(userId, password);
             }
         });
     }
 
 
     // Sign In
-    private void signIn() {
+    private void signIn(String _userId, String _password) {
 
         // log
         Log.d(TAG, "signIn() has called");
 
         // 값을 담을 String
-        String userId = binding.etSignInUserId.getText().toString(); // userId
-        String password = binding.etSignInPassword.getText().toString(); // password
+        String userId = _userId; // userId
+        String password = _password; // password
 
         SignInRequest signInRequest = new SignInRequest(userId, password);
 
@@ -117,8 +180,11 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
 
-                // log
+                // log 
                 Log.d(TAG, "Sign In failed..");
+
+                // Remove Editor
+                editor.clear();
 
                 Toast.makeText(SignInActivity.this, "Sign In failed..", Toast.LENGTH_SHORT).show();
             }
