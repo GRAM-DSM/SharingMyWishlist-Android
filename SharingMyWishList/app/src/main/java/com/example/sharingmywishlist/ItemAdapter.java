@@ -47,12 +47,38 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // CheckBox
         holder.chk_item_clear.setChecked(dataSet.get(position).isClear()); // clear
 
+        // Set Item Background Drawable
+        // Background Color
+        String color = dataSet.get(position).getColor();
+        Log.d(TAG, "color : " + color); // log color
+        // change Background
+        switch (color) {
+            case "wish-nor": // 기본(하얀색)
+                holder.layout_item_background.setBackgroundResource(R.drawable.bg_item_nor);
+                break;
+            case "wish-red": // 빨강
+                holder.layout_item_background.setBackgroundResource(R.drawable.bg_item_red);
+                break;
+            case "wish-gre": // 초록
+                holder.layout_item_background.setBackgroundResource(R.drawable.bg_item_gre);
+                break;
+            case "wish-blu": // 파랑
+                holder.layout_item_background.setBackgroundResource(R.drawable.bg_item_blu);
+                break;
+        }
+
+
+
+
         // log
         Log.d(TAG, "title : " + dataSet.get(position).getTitle()); // title
         Log.d(TAG, "contents : " + dataSet.get(position).getContents()); // contents
         Log.d(TAG, "color : " + dataSet.get(position).getColor()); // color
         Log.d(TAG, "clear : " + dataSet.get(position).isClear()); // clear
+
+
     }
+
 
     @Override
     public int getItemCount() {
@@ -71,6 +97,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // CheckBox
         public CheckBox chk_item_clear; // clear
 
+        // Background
+        public View layout_item_background; // linearLayout
+
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -81,12 +110,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             // CheckBox
             chk_item_clear = itemView.findViewById(R.id.chk_item_clear); // clear
 
+            // Background Layout
+            layout_item_background = itemView.findViewById(R.id.layout_item_background); // background layout
+
             // clear Listener
             chkClearListener();
         }
 
 
-        // clear Listener
+        // TODO clear Listener
         private void chkClearListener() {
             chk_item_clear.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
