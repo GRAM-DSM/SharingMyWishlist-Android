@@ -51,6 +51,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // Background Color
         String color = dataSet.get(position).getColor();
         Log.d(TAG, "color : " + color); // log color
+
         // change Background
         switch (color) {
             case "wish-nor": // 기본(하얀색)

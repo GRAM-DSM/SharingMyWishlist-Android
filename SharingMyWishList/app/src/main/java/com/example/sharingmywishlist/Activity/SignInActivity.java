@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // context
-        context = getApplicationContext();
+        context = getBaseContext();
 
         // SharedPreferences
         preferences = context.getSharedPreferences("signIn", Context.MODE_PRIVATE);
@@ -71,9 +71,9 @@ public class SignInActivity extends AppCompatActivity {
         String password = preferences.getString("password", null);
 
         // TESTLOG
-        Log.d(TAG, "junj auto Sign In : " + autoSIgnIn);
-        Log.d(TAG, "junj userId : " + userId);
-        Log.d(TAG, "junj password : " + password);
+        Log.d(TAG, "TESTLOG auto Sign In : " + autoSIgnIn);
+        Log.d(TAG, "TESTLOG userId : " + userId);
+        Log.d(TAG, "TESTLOG password : " + password);
 
         // Start auto sign in if auto sign in allowed
         if (autoSIgnIn) {
