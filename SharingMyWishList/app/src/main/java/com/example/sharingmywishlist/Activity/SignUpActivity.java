@@ -41,9 +41,6 @@ public class SignUpActivity extends AppCompatActivity {
     // goToSignInClickListener
     private void goToSignInClickListener() {
 
-        // log
-        Log.d(TAG, "goToSignInClickListener() has called");
-
         binding.btnSignUpGoToSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,15 +57,22 @@ public class SignUpActivity extends AppCompatActivity {
     // btn_signUp_signUp ClickListener
     private void signUpButtonClickListener() {
 
-        // log
-        Log.d(TAG, "signUpButtonClickListener() has called");
-
         binding.btnSignUpSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                // Sign Up
-                signUp();
+                // Confirm Password
+                String password = binding.etSignUpPassword.getText().toString();
+                String confirmPassword = binding.etSignUpConfirmPassword.getText().toString();
+
+                if (!password.equals(confirmPassword)) {
+
+                    Toast.makeText(getBaseContext(), "Password Incorrect..", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    // Sign Up
+                    signUp();
+                }
             }
         });
     }

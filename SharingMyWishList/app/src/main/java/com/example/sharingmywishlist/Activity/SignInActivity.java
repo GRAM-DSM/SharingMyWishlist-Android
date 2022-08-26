@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
 import com.example.sharingmywishlist.Request.SignInRequest;
-import com.example.sharingmywishlist.Request.SignUpRequest;
 import com.example.sharingmywishlist.Response.SignInResponse;
 import com.example.sharingmywishlist.databinding.ActivitySignInBinding;
 
@@ -48,7 +47,7 @@ public class SignInActivity extends AppCompatActivity {
         // SharedPreferences
         preferences = context.getSharedPreferences("signIn", Context.MODE_PRIVATE);
         editor = preferences.edit(); // Editor
-
+        
         // Auto SignIn
         autoSignIn();
 
@@ -58,6 +57,9 @@ public class SignInActivity extends AppCompatActivity {
         // Go To Sign Up ClickListener
         goToSignUpClickListener();
     }
+
+
+    // TextCheck
 
 
     // Auto Sign In
