@@ -53,6 +53,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // TextView
         holder.tv_item_title.setText(dataSet.get(position).getTitle()); // title
         holder.tv_item_contents.setText(dataSet.get(position).getContents()); // contents
+        holder.tv_item_writer.setText(dataSet.get(position).getWriter()); // writer
 
         // CheckBox
         holder.chk_item_clear.setChecked(dataSet.get(position).isClear()); // clear
@@ -65,8 +66,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
                     // clear
                     clear(dataSet.get(position).getId());
-                } else {
-
                 }
             }
         });
@@ -98,6 +97,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         Log.d(TAG, "@id : " + dataSet.get(position).get_id()); // server id
         Log.d(TAG, "id : " + dataSet.get(position).getId()); // id
         Log.d(TAG, "title : " + dataSet.get(position).getTitle()); // title
+        Log.d(TAG, "writer : " + dataSet.get(position).getWriter()); // writer
         Log.d(TAG, "contents : " + dataSet.get(position).getContents()); // contents
         Log.d(TAG, "color : " + dataSet.get(position).getColor()); // color
         Log.d(TAG, "clear : " + dataSet.get(position).isClear()); // clear
@@ -116,7 +116,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d(TAG, "response code : " + response.code());
-                Log.d(TAG, "" + id);
+                Log.d(TAG, "id : " + id);
 
                 if (response.isSuccessful()) {
                     try {
@@ -155,6 +155,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // TextView
         public TextView tv_item_title; // title
         public TextView tv_item_contents; // contents
+        public TextView tv_item_writer; // writer
 
         // CheckBox
         public CheckBox chk_item_clear; // clear
@@ -168,6 +169,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             // TextView
             tv_item_title = itemView.findViewById(R.id.tv_item_title); // title
             tv_item_contents = itemView.findViewById(R.id.tv_item_contents); // contents
+            tv_item_writer = itemView.findViewById(R.id.tv_item_writer); // writer
 
             // CheckBox
             chk_item_clear = itemView.findViewById(R.id.chk_item_clear); // clear
