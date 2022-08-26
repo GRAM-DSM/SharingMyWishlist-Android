@@ -2,6 +2,7 @@ package com.example.sharingmywishlist.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -70,6 +71,23 @@ public class MainActivity extends AppCompatActivity {
 
         // getWishAll
         getWishAll();
+
+        // initiate SwipeRefreshLayout
+        initSwipeRefreshLayout();
+    }
+
+
+    // initiate SwipeRefreshLayout
+    private void initSwipeRefreshLayout() {
+        binding.swipeRefreshLayoutMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                getWishAll();
+                adapter.notifyDataSetChanged();
+                binding.swipeRefreshLayoutMain.setRefreshing(false);
+            }
+        });
     }
 
 
