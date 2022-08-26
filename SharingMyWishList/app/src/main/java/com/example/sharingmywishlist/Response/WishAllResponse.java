@@ -7,6 +7,9 @@ public class WishAllResponse {
     // id
     int id;
 
+    // @id
+    int _id;
+
     // title
     String title;
 
@@ -24,6 +27,10 @@ public class WishAllResponse {
 
     public int getId() {
         return id;
+    }
+
+    public int get_id() {
+        return _id;
     }
 
     public String getTitle() {
