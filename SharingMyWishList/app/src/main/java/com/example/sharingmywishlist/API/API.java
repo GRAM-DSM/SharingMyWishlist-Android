@@ -11,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 
 public interface API {
@@ -33,5 +34,4 @@ public interface API {
     Call<List<WishAllResponse>> getAll(
             @Header("Authorization") String accessToken
     );
-
 }

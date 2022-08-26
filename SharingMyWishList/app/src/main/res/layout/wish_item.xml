@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:background="@color/bg_nor">
+    android:elevation="5dp"
+    android:background="@drawable/bg_item_nor">
 
 
     <LinearLayout
@@ -11,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="6"
-        android:background="@color/bg_red"
+        android:background="@drawable/bg_item_nor"
         android:orientation="vertical">
 
         <TextView
