@@ -20,4 +20,6 @@
     <color name="bg_blu">#AFD5FF</color>
     <color name="bg_blu_stroke">#489FFF</color>
 
+    <color name="bg_item_stroke">@color/dark_gray</color>
+
 </resources>
