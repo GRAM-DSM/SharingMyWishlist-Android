@@ -12,7 +12,7 @@ public class APIProvider {
 
     // Retrofit의 인스턴스 반환 메서드
     public static Retrofit getInstance() {
-        if(retrofit == null) {
+        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())

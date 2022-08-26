@@ -3,7 +3,17 @@
 
     <string name="signUp">Sign Up</string>
     <string name="signIn">Sign In</string>
-    <string name="signOut">◀︎ Sign Out</string>
+    <string name="signOut">Sign Out</string>
+
+    <string name="main_signOut">◀︎Sign Out</string>
+
+    <!-- CreateActivity -->
+
+    <!-- Create -->
+    <string name="create_cancel">◀Cancel</string>
+    <string name="create_commitCreate">ADD▶︎</string>
+    <string name="create_title">Title</string>
+    <string name="create_content">Content</string>
 
     <!-- MainActivity -->
 
