@@ -32,17 +32,23 @@
             android:textSize="16dp" />
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="4dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relativeLayout_main" />
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout_main">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_main_addWish"
