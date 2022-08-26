@@ -19,7 +19,7 @@
         <TextView
             android:id="@+id/tv_main_signOut"
             android:layout_width="wrap_content"
-            android:layout_height="48sp"
+            android:layout_height="36dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"

@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:background="@drawable/bg_item_nor"
-    android:elevation="5dp">
+    android:background="@drawable/bg_item"
+    android:elevation="4dp">
 
 
     <LinearLayout
@@ -12,13 +12,12 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="6"
-        android:background="@drawable/bg_item_nor"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="12dp"
 
             android:layout_marginTop="8dp"
             android:gravity="bottom">
@@ -27,11 +26,12 @@
                 android:id="@+id/tv_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:layout_marginStart="4dp"
+                android:ellipsize="end"
                 android:gravity="center_vertical"
+                android:maxLength="24"
                 android:maxLines="1"
-                android:text="Title Here"
+                android:text="Title HereTitle HereTitle Here"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -43,6 +43,7 @@
                 android:layout_marginStart="8dp"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
+                android:maxLength="12"
                 android:maxLines="1"
                 android:text="Writer Here"
                 android:textColor="@color/light_gray"
@@ -53,8 +54,9 @@
             android:id="@+id/tv_item_contents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="5"
