@@ -13,8 +13,10 @@
         <entry key="app/src/main/res/drawable/bg_item_nor.xml" value="0.2295" />
         <entry key="app/src/main/res/drawable/bg_item_red.xml" value="0.2295" />
         <entry key="app/src/main/res/drawable/cursor_textinputlayout.xml" value="0.1035" />
+        <entry key="app/src/main/res/drawable/floating_drawable.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16839752197265626" />
+        <entry key="app/src/main/res/layout/activity_create.xml" value="0.281229485405816" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17373504638671888" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.21016754150390624" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2899149576822917" />
         <entry key="app/src/main/res/layout/wish_item.xml" value="0.30301055908203123" />

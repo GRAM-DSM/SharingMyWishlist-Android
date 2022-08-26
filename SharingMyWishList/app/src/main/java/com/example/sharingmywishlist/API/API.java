@@ -1,6 +1,7 @@
 package com.example.sharingmywishlist.API;
 
 import com.example.sharingmywishlist.Request.ClearRequest;
+import com.example.sharingmywishlist.Request.CreateRequest;
 import com.example.sharingmywishlist.Request.SignInRequest;
 import com.example.sharingmywishlist.Request.SignUpRequest;
 import com.example.sharingmywishlist.Response.SignInResponse;
@@ -43,5 +44,12 @@ public interface API {
     Call<ResponseBody> clear(
             @Header("Authorization") String accessToken,
             @Path("id") int id
+    );
+
+    // Create
+    @POST("/wish/create")
+    Call<Void> create(
+            @Header("Authorization") String accessToken,
+            @Body CreateRequest createRequest
     );
 }
