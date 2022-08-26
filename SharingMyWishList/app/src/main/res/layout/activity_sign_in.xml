@@ -32,7 +32,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:boxStrokeColor="@color/dark_green"
+                app:hintTextColor="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_signIn_userId"
@@ -41,13 +43,16 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/signIn_userId"
                     android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@drawable/cursor_textinputlayout"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:boxStrokeColor="@color/dark_green"
+                app:hintTextColor="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_signIn_password"
@@ -56,6 +61,7 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/signIn_password"
                     android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/cursor_textinputlayout"
                     android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -66,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Keep me logged in"
+                android:buttonTint="@color/dark_green"
+                android:text="@string/signIn_keepSignIn"
                 android:textColor="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatButton

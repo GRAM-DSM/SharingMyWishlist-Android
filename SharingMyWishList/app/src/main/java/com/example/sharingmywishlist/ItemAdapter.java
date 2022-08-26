@@ -50,7 +50,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // Set Item Background Drawable
         // Background Color
         String color = dataSet.get(position).getColor();
-        Log.d(TAG, "color : " + color); // log color
 
         // change Background
         switch (color) {
@@ -72,10 +71,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
 
         // log
+        Log.d(TAG, "===== Item on " + position + " =====");
         Log.d(TAG, "title : " + dataSet.get(position).getTitle()); // title
         Log.d(TAG, "contents : " + dataSet.get(position).getContents()); // contents
         Log.d(TAG, "color : " + dataSet.get(position).getColor()); // color
         Log.d(TAG, "clear : " + dataSet.get(position).isClear()); // clear
+        Log.d(TAG, "==========");
 
 
     }

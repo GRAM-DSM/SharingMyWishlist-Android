@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
+import com.example.sharingmywishlist.R;
 import com.example.sharingmywishlist.Request.SignUpRequest;
 import com.example.sharingmywishlist.databinding.ActivitySignUpBinding;
 
@@ -67,11 +68,12 @@ public class SignUpActivity extends AppCompatActivity {
 
                 if (!password.equals(confirmPassword)) {
 
-                    Toast.makeText(getBaseContext(), "Password Incorrect..", Toast.LENGTH_SHORT).show();
+                    binding.textInputLayoutMainConfirmPassword.setHelperText(getString(R.string.signUp_confirmPassword_incorrect));
                 } else {
 
                     // Sign Up
                     signUp();
+                    binding.textInputLayoutMainConfirmPassword.setHelperText(null);
                 }
             }
         });

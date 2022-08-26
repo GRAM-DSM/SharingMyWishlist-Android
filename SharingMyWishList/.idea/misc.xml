@@ -12,9 +12,10 @@
         <entry key="app/src/main/res/drawable/bg_item_gre.xml" value="0.2295" />
         <entry key="app/src/main/res/drawable/bg_item_nor.xml" value="0.2295" />
         <entry key="app/src/main/res/drawable/bg_item_red.xml" value="0.2295" />
+        <entry key="app/src/main/res/drawable/cursor_textinputlayout.xml" value="0.1035" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2855712890625" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2899149576822917" />
         <entry key="app/src/main/res/layout/wish_item.xml" value="0.10174560546875" />
       </map>

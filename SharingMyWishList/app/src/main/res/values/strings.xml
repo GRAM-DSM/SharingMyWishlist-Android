@@ -12,9 +12,11 @@
     <string name="signUp_nickName">Nickname</string>
     <string name="signUp_password">Password</string>
     <string name="signUp_confirmPassword">Confirm Password</string>
+    <string name="signUp_confirmPassword_incorrect">Password Incorrect</string>
 
     <!-- Sign In -->
     <string name="signIn_userId">ID</string>
     <string name="signIn_password">Password</string>
+    <string name="signIn_keepSignIn">Keep me signed in</string>
 
 </resources>

@@ -26,7 +26,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:hintTextColor="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_signUp_nickName"
@@ -35,13 +37,16 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/signUp_nickName"
                     android:inputType="textPersonName"
+                    android:textCursorDrawable="@drawable/cursor_textinputlayout"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:hintTextColor="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_signUp_userId"
@@ -50,13 +55,16 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/signUp_userId"
                     android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@drawable/cursor_textinputlayout"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:hintTextColor="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_signUp_password"
@@ -65,13 +73,19 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/signUp_password"
                     android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/cursor_textinputlayout"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_main_confirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                app:boxStrokeColor="@color/dark_green"
+                app:hintTextColor="@color/dark_green"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@android:color/holo_red_light">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_signUp_confirmPassword"
@@ -80,6 +94,7 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/signUp_confirmPassword"
                     android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/cursor_textinputlayout"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
