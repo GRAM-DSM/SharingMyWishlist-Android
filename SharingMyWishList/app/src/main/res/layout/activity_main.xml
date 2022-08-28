@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/tv_main_signOut"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="8dp"
@@ -38,8 +38,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_main_refreshWish"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
