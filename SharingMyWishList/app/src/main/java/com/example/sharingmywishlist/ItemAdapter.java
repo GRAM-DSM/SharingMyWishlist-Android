@@ -55,6 +55,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     void disableCheck(View view) {
 
         view.setEnabled(false);
+        view.setAlpha((float) 0.4);
     }
 
     @Override
