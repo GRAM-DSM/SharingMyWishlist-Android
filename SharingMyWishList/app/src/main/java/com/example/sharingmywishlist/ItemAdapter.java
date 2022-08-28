@@ -63,11 +63,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.chk_item_clear.setChecked(dataSet.get(position).isClear()); // clear
         holder.chk_item_clear.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean changed) {
                 // log
-                Log.d(TAG, "onCheckedChanged : " + b);
-                if (b) {
-
+                Log.d(TAG, "onCheckedChanged : " + changed);
+                if (changed) {
                     // clear
                     clear(dataSet.get(position).getId());
                 }
@@ -76,9 +75,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
 
         // Set Item Background Drawable
+
         // Background Color
         String color = dataSet.get(position).getColor();
-
         // change Background
         switch (color) {
             case "wish-nor": // 기본(하얀색)
@@ -94,8 +93,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 holder.layout_item_background.setBackgroundResource(R.drawable.bg_item_blu);
                 break;
         }
-
-
+        
         // log
         Log.d(TAG, "===== Item on " + position + " =====");
         Log.d(TAG, "@id : " + dataSet.get(position).get_id()); // server id
