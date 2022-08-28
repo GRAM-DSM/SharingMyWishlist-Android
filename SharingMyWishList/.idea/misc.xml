@@ -8,6 +8,10 @@
         <entry key="app/src/main/res/drawable-v24/bg_btn_sign_pri.xml" value="0.186" />
         <entry key="app/src/main/res/drawable-v24/bg_btn_sign_sec.xml" value="0.1225" />
         <entry key="app/src/main/res/drawable-v24/bg_main_titlebar.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_create_blu.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/bg_create_gre.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/bg_create_nor.xml" value="0.12715759277343744" />
+        <entry key="app/src/main/res/drawable/bg_create_red.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/bg_item.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_item_blu.xml" value="0.2295" />
         <entry key="app/src/main/res/drawable/bg_item_gre.xml" value="0.2295" />
@@ -16,7 +20,11 @@
         <entry key="app/src/main/res/drawable/cursor_textinputlayout.xml" value="0.1035" />
         <entry key="app/src/main/res/drawable/floating_drawable.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_create.xml" value="0.3830899750803528" />
+        <entry key="app/src/main/res/drawable/selector.xml" value="0.106" />
+        <entry key="app/src/main/res/drawable/selector_blu.xml" value="0.106" />
+        <entry key="app/src/main/res/drawable/selector_gre.xml" value="0.106" />
+        <entry key="app/src/main/res/drawable/selector_red.xml" value="0.106" />
+        <entry key="app/src/main/res/layout/activity_create.xml" value="0.36847076416015623" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2540106951871658" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.21016754150390624" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2899149576822917" />
