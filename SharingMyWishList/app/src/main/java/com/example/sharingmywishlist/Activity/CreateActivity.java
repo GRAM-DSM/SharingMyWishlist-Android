@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
@@ -81,12 +82,19 @@ public class CreateActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Log.d(TAG, "create Success, title : " + title);
+                    Toast.makeText(getBaseContext(), "Create Success!", Toast.LENGTH_SHORT).show();
+
+                    // Intent
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.d(TAG, "create Failure..");
+                Toast.makeText(getBaseContext(), "Create Failure..", Toast.LENGTH_SHORT).show();
             }
         });
     }
