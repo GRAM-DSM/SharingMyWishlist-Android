@@ -54,8 +54,16 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //createRequest
-                create();
+                if (binding.etCreateTitle.getText().toString().replaceAll(" ", "").equals("")) {
+
+                    binding.textInputLayoutCreateTitle.setHelperText(String.valueOf(R.string.create_title_format_error));
+                    Toast.makeText(getBaseContext(), "text format error", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    // create
+                    create();
+                }
             }
         });
     }
@@ -69,6 +77,9 @@ public class CreateActivity extends AppCompatActivity {
         // String
         String title = binding.etCreateTitle.getText().toString(); // title
         String contents = binding.etCreateContent.getText().toString(); // contents
+        if (contents == null) {
+            contents = "";
+        }
         String color = this.selectedColor; // color
 
         // CreateRequest
@@ -81,7 +92,6 @@ public class CreateActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
 
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "create Success, title : " + title);
                     Toast.makeText(getBaseContext(), "Create Success!", Toast.LENGTH_SHORT).show();
 
                     // Intent

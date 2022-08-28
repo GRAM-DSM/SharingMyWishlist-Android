@@ -9,7 +9,8 @@
     <string name="main_createWish">ADD▶</string>
 
     <!-- CreateActivity -->
-
+    <string name="create_title_format_error">The title cannot be blank</string>
+    
     <!-- Create -->
     <string name="create_cancel">◀Cancel</string>
     <string name="create_commitCreate">ADD▶︎</string>

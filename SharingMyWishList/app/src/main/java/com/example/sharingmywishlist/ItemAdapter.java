@@ -93,7 +93,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 holder.layout_item_background.setBackgroundResource(R.drawable.bg_item_blu);
                 break;
         }
-        
+
         // log
         Log.d(TAG, "===== Item on " + position + " =====");
         Log.d(TAG, "@id : " + dataSet.get(position).get_id()); // server id
