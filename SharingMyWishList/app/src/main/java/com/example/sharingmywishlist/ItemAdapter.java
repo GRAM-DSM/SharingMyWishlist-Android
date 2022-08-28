@@ -51,6 +51,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         return new ItemViewHolder(view);
     }
 
+    // check Cleared
+    void disableCheck(View view) {
+
+        view.setEnabled(false);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ItemAdapter.ItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
@@ -61,14 +67,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         // CheckBox
         holder.chk_item_clear.setChecked(dataSet.get(position).isClear()); // clear
-        holder.chk_item_clear.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        if (dataSet.get(position).isClear()) {
+            disableCheck(holder.chk_item_clear);
+        }
+        holder.chk_item_clear.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean changed) {
-                // log
-                Log.d(TAG, "onCheckedChanged : " + changed);
-                if (changed) {
-                    // clear
-                    clear(dataSet.get(position).getId());
+            public void onClick(View view) {
+
+
+                if (holder.chk_item_clear.isChecked()) {
+                    boolean isChecked = holder.chk_item_clear.isChecked();
+                    if (isChecked) {
+                        // clear
+                        clear(dataSet.get(position).getId());
+
+                        disableCheck(holder.chk_item_clear);
+                    }
                 }
             }
         });
