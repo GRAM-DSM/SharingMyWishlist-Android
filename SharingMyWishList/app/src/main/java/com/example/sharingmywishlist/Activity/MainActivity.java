@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     // initiate Refresh ClickListener
     private void initRefreshClickListener() {
 
-        binding.imgMainRefreshWish.setOnClickListener(new View.OnClickListener() {
+        binding.btnMainRefreshWish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
