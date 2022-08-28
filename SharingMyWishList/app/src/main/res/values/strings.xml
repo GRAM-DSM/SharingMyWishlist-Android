@@ -6,6 +6,7 @@
     <string name="signOut">Sign Out</string>
 
     <string name="main_signOut">◀︎Sign Out</string>
+    <string name="main_createWish">ADD▶</string>
 
     <!-- CreateActivity -->
 
