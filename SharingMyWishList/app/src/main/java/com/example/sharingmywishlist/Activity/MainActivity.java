@@ -74,6 +74,41 @@ public class MainActivity extends AppCompatActivity {
 
         // initiate SwipeRefreshLayout
         initSwipeRefreshLayout();
+
+        // initiate Add Wish ClickListener
+        addWishClickListener();
+
+        // initiate Refresh Button ClickListener
+        initRefreshClickListener();
+    }
+
+
+    // initiate Refresh ClickListener
+    private void initRefreshClickListener() {
+
+        binding.btnMainRefreshWish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // refresh Wish
+                refreshWish();
+            }
+        });
+    }
+
+
+    // initiate Add Wish ClickListener
+    private void addWishClickListener() {
+
+        binding.btnMainAddWish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Intent to CreateActivity
+                Intent intent = new Intent(getBaseContext(), CreateActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -82,12 +117,18 @@ public class MainActivity extends AppCompatActivity {
         binding.swipeRefreshLayoutMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
-                getWishAll();
-                adapter.notifyDataSetChanged();
-                binding.swipeRefreshLayoutMain.setRefreshing(false);
+                // refresh Wish
+                refreshWish();
             }
         });
+    }
+
+
+    // refresh Wish
+    private void refreshWish() {
+        getWishAll();
+        adapter.clearWish();
+        binding.swipeRefreshLayoutMain.setRefreshing(false);
     }
 
 

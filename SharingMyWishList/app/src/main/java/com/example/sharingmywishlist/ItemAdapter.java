@@ -38,6 +38,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         this.dataSet = dataSet;
     }
 
+    public void clearWish() {
+        dataSet.clear();
+    }
+
     @NonNull
     @Override
     public ItemAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
