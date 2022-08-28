@@ -3,7 +3,7 @@ package com.example.sharingmywishlist.Request;
 public class CreateRequest {
 
     // userId
-    String userId;
+    String title;
 
     // contents
     String contents;
@@ -11,8 +11,8 @@ public class CreateRequest {
     // color
     String color;
 
-    public CreateRequest(String userId, String contents, String color) {
-        this.userId = userId;
+    public CreateRequest(String title, String contents, String color) {
+        this.title = title;
         this.contents = contents;
         this.color = color;
     }

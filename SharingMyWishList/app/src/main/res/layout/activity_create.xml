@@ -45,6 +45,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_btn_pri"
+            android:elevation="4dp"
             android:gravity="center"
             android:padding="8dp"
             android:text="@string/create_cancel"
@@ -117,7 +118,6 @@
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
-
                 <RadioGroup
                     android:id="@+id/radioGroup_create"
                     android:layout_width="match_parent"
@@ -134,6 +134,7 @@
                         android:layout_marginBottom="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/selector_nor"
+                        android:checked="true"
                         android:elevation="4dp" />
 
                     <RadioButton
@@ -148,7 +149,6 @@
                         android:background="@drawable/selector_red"
                         android:elevation="4dp" />
 
-
                     <RadioButton
                         android:id="@+id/btn_create_gre"
                         android:layout_width="match_parent"
@@ -161,7 +161,6 @@
                         android:background="@drawable/selector_gre"
                         android:elevation="4dp" />
 
-
                     <RadioButton
                         android:id="@+id/btn_create_blu"
                         android:layout_width="match_parent"
@@ -173,7 +172,6 @@
                         android:layout_weight="1"
                         android:background="@drawable/selector_blu"
                         android:elevation="4dp" />
-
                 </RadioGroup>
             </LinearLayout>
 
