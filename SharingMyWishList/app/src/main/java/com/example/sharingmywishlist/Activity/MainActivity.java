@@ -77,6 +77,17 @@ public class MainActivity extends AppCompatActivity {
 
         // initiate Add Wish ClickListener
         addWishClickListener();
+
+        // initiate Refresh Button ClickListener
+        initRefreshClickListener();
+    }
+
+
+    // initiate Refresh ClickListener
+    private void initRefreshClickListener() {
+
+        // refresh Wish
+        refreshWish();
     }
 
 
@@ -100,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         binding.swipeRefreshLayoutMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 // refresh Wish
                 refreshWish();
             }
@@ -111,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     // refresh Wish
     private void refreshWish() {
         getWishAll();
-        adapter.notifyDataSetChanged();
+        adapter.clearWish();
         binding.swipeRefreshLayoutMain.setRefreshing(false);
     }
 
