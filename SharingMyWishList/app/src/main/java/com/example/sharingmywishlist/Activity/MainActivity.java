@@ -91,10 +91,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // restart Activity
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
+                // refresh Wish
+                refreshWish();
             }
         });
     }
@@ -120,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         binding.swipeRefreshLayoutMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                
+
                 // refresh Wish
                 refreshWish();
             }
@@ -130,8 +128,9 @@ public class MainActivity extends AppCompatActivity {
 
     // refresh Wish
     private void refreshWish() {
-        getWishAll();
+
         adapter.clearWish();
+        getWishAll();
         binding.swipeRefreshLayoutMain.setRefreshing(false);
     }
 

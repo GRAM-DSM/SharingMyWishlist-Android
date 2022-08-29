@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
+import com.example.sharingmywishlist.Activity.MainActivity;
 import com.example.sharingmywishlist.Activity.SignInActivity;
 import com.example.sharingmywishlist.Response.WishAllResponse;
 
@@ -31,6 +32,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     // TAG
     private final static String TAG = "ItemAdapter";
+
+    static MainActivity mainActivity = new MainActivity();
+
     // Response List
     private ArrayList<WishAllResponse> dataSet;
 
