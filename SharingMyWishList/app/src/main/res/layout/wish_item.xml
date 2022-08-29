@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:background="@drawable/bg_item"
+    android:id="@+id/rootLayout_item"
     android:elevation="4dp">
 
 
