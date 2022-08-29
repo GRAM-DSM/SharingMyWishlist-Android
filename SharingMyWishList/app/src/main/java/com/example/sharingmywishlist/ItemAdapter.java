@@ -76,6 +76,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         // CheckBox
         holder.chk_item_clear.setChecked(dataSet.get(position).isClear()); // clear
+        Log.d(TAG, "Cleared : " + dataSet.get(position).isClear());
         if (dataSet.get(position).isClear()) {
             disableCheck(holder.chk_item_clear);
         }
@@ -113,7 +114,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 });
 
                 AlertDialog dialog = builder.show();
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(dark_green);
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE);
                 dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.RED);
             }
         });

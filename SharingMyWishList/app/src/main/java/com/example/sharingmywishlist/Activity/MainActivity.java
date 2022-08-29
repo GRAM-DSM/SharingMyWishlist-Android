@@ -90,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // refresh Wish
-                refreshWish();
+                // restart Activity
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
