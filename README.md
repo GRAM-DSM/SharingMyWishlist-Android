@@ -23,3 +23,7 @@
 > - Server : 길근우
 > - iOS : 박주영, 조병진
 > - Design : 박준수
+
+## Retrospect
+- RecyclerView에서도 ViewBinding을 사용할 수 있다는 사실을 뒤늦게 꺠달아서 RecyclerView Adapter를 작성할 때 일일히 findViewById() 메소드를 호출하는 작업을 거쳤다.
+- createWish(), getAllWish() 등의 여러 클래스에서 사용되는 메서드는 하나의 클래스에서 관리하고, 그 클래스의 인스턴스를 생성하여 다른 클래스에서 호출하는 방법을 사용했더라면 관련 문제에 직면했을 때 유연하게 클래스 멤버 함수를 호출하는 방법으로 대처할 수 있었을 것이다.
