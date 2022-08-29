@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         binding.swipeRefreshLayoutMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                
                 // refresh Wish
                 refreshWish();
             }

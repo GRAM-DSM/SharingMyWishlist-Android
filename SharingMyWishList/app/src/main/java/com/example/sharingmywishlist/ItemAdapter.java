@@ -58,6 +58,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         view.setAlpha((float) 0.4);
     }
 
+    // enable Check
+    void enableCheck(View view) {
+
+        view.setEnabled(true);
+        view.setAlpha(1);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ItemAdapter.ItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
@@ -69,8 +76,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         // CheckBox
         holder.chk_item_clear.setChecked(dataSet.get(position).isClear()); // clear
         Log.d(TAG, "Cleared : " + dataSet.get(position).isClear());
-        if (dataSet.get(position).isClear()) {
+        if (dataSet.get(position).isClear() == true) {
             disableCheck(holder.chk_item_clear);
+        } else {
+            enableCheck(holder.chk_item_clear);
         }
         holder.chk_item_clear.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
