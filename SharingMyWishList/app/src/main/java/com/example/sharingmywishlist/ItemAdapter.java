@@ -1,30 +1,22 @@
 package com.example.sharingmywishlist;
 
-import static com.example.sharingmywishlist.R.color.dark_green;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharingmywishlist.API.API;
 import com.example.sharingmywishlist.API.APIProvider;
-import com.example.sharingmywishlist.Activity.MainActivity;
 import com.example.sharingmywishlist.Activity.SignInActivity;
-import com.example.sharingmywishlist.Request.ClearRequest;
 import com.example.sharingmywishlist.Response.WishAllResponse;
 
 import java.io.IOException;
@@ -123,8 +115,50 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             @Override
             public boolean onLongClick(View view) {
 
-                // removeDialog
-                startRemoveDialog();
+                Log.d(TAG, "onLongClick");
+
+                // Dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Are you sure you delete?");
+                // Positive
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        API api = APIProvider.getInstance().create(API.class);
+
+                        api.delete(SignInActivity.accessToken, dataSet.get(position).getId()).enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                                if (response.isSuccessful()) {
+                                    Log.d(TAG, "delete Succeed");
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Log.d(TAG, "delete Failed");
+                            }
+                        });
+                    }
+                });
+                builder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+
+                builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+
+                    }
+                });
+
+                AlertDialog dialog = builder.show();
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE);
+                dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.RED);
 
                 return true;
             }
@@ -161,14 +195,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         Log.d(TAG, "color : " + dataSet.get(position).getColor()); // color
         Log.d(TAG, "clear : " + dataSet.get(position).isClear()); // clear
         Log.d(TAG, "==========");
-    }
-
-
-    // start RemoveDialog
-    private void startRemoveDialog() {
-
-        //AlertDialog.Builder builder = new AlertDialog.Builder()
-
     }
 
 

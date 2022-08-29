@@ -1,6 +1,5 @@
 package com.example.sharingmywishlist.API;
 
-import com.example.sharingmywishlist.Request.ClearRequest;
 import com.example.sharingmywishlist.Request.CreateRequest;
 import com.example.sharingmywishlist.Request.SignInRequest;
 import com.example.sharingmywishlist.Request.SignUpRequest;
@@ -12,6 +11,7 @@ import java.util.List;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.PATCH;
@@ -51,5 +51,12 @@ public interface API {
     Call<Void> create(
             @Header("Authorization") String accessToken,
             @Body CreateRequest createRequest
+    );
+
+    // Delete
+    @DELETE("/wish/delete/{id}")
+    Call<Void> delete(
+            @Header("Authorization") String accessToken,
+            @Path("id") int id
     );
 }
