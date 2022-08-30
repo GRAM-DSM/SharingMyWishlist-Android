@@ -33,8 +33,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     // TAG
     private final static String TAG = "ItemAdapter";
 
-    static MainActivity mainActivity = new MainActivity();
-
     // Response List
     private ArrayList<WishAllResponse> dataSet;
 
