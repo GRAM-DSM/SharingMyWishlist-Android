@@ -23,15 +23,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:helperTextEnabled="true">
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/light_red">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_signIn_userId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:hint="@string/signIn_userId"
-                android:text=""
                 android:inputType="text"
+                android:text=""
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -41,7 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:helperTextEnabled="true">
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/light_red">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_signIn_password"

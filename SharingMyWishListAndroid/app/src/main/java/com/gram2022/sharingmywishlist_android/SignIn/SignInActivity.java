@@ -41,15 +41,34 @@ public class SignInActivity extends AppCompatActivity {
 
     private void initSignInButton() {
         binding.btnSignInSignIn.setOnClickListener(view -> {
-
-            startSignIn();
+            if (checkTextFormat()) {
+                startSignIn(getUserId(), getPassword());
+            }
         });
     }
 
-    private void startSignIn() {
+    private boolean checkTextFormat() {
+        String errorMessage = getString(R.string.signUp_blankError);
+
+        String userId = getUserId();
+        String password = getPassword();
+
+        binding.textInputLayoutSignInUserId.setHelperText(null);
+        binding.textInputLayoutSignInPassword.setHelperText(null);
+
+        if (userId.equals("") || userId.equals(null)) {
+            binding.textInputLayoutSignInUserId.setHelperText(errorMessage);
+        }
+        if (password.equals("") || password.equals(null)) {
+            binding.textInputLayoutSignInPassword.setHelperText(errorMessage);
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    private void startSignIn(String userId, String password) {
         Log.d(TAG, "startSignIn() has called");
-        String userId = binding.etSignInUserId.getText().toString();
-        String password = binding.etSignInPassword.getText().toString();
 
         SignInRequest signInRequest = new SignInRequest(userId, password);
         API api = APIProvider.getInstance().create(API.class);
@@ -66,5 +85,13 @@ public class SignInActivity extends AppCompatActivity {
                 Log.e(TAG, "signIn failed", t);
             }
         });
+    }
+
+    private String getUserId() {
+        return binding.etSignInUserId.getText().toString().replace(" ", "");
+    }
+
+    private String getPassword() {
+        return binding.etSignInPassword.getText().toString().replace(" ", "");
     }
 }
