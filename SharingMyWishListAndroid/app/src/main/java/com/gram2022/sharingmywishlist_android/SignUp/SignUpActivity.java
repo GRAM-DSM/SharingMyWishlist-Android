@@ -106,7 +106,9 @@ public class SignUpActivity extends AppCompatActivity {
         view.setHelperText(text);
     }
 
-    private void startSignUp(String userId, String nickName, String password) {
-        Log.d(TAG, "startSignUp() has called");
+    private void startIntent(Class to) {
+        Intent intent = new Intent(getBaseContext(), to);
+        startActivity(intent);
+        finish();
     }
 }

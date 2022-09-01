@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
+import com.gram2022.sharingmywishlist_android.Main.MainActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignUp.SignUpActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivitySignInBinding;
@@ -33,9 +34,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void initGoToSignUpTextView() {
         binding.tvSignInGoToSignUp.setOnClickListener(view -> {
-            Intent intent = new Intent(getBaseContext(), SignUpActivity.class);
-            startActivity(intent);
-            finish();
+            startIntent(SignUpActivity.class);
         });
     }
 
@@ -77,6 +76,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "signIn succeed, userId : " + userId + ", accessToken : " + response.body().accessToken);
+                    startIntent(MainActivity.class);
                 }
             }
 
@@ -93,5 +93,11 @@ public class SignInActivity extends AppCompatActivity {
 
     private String getPassword() {
         return binding.etSignInPassword.getText().toString().replace(" ", "");
+    }
+
+    private void startIntent(Class to) {
+        Intent intent = new Intent(getBaseContext(), to);
+        startActivity(intent);
+        finish();
     }
 }
