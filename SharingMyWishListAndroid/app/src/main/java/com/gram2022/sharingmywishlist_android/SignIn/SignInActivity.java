@@ -19,7 +19,6 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     final String TAG = this.getClass().getSimpleName();
-
     ActivitySignInBinding binding;
 
     @Override
@@ -42,11 +41,13 @@ public class SignInActivity extends AppCompatActivity {
 
     private void initSignInButton() {
         binding.btnSignInSignIn.setOnClickListener(view -> {
+
             startSignIn();
         });
     }
 
     private void startSignIn() {
+        Log.d(TAG, "startSignIn() has called");
         String userId = binding.etSignInUserId.getText().toString();
         String password = binding.etSignInPassword.getText().toString();
 

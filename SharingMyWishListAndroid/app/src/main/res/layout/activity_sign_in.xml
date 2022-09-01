@@ -21,14 +21,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_signIn_userId"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:helperTextEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_signIn_userId"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:hint="@string/signIn_userId"
+                android:text=""
+                android:inputType="text"
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -36,14 +39,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_signIn_password"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="8dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:helperTextEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_signIn_password"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:hint="@string/signIn_password"
+                android:inputType="textPassword"
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -55,6 +60,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/signIn"
             android:textAllCaps="false"
+            android:textColor="@color/light_blue"
             android:textSize="18sp" />
 
         <TextView
