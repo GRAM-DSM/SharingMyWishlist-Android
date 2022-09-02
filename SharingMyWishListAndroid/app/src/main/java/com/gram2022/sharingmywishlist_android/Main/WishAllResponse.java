@@ -4,12 +4,36 @@ public class WishAllResponse {
 
     WishResponseList wishResponseList;
 
-    private class WishResponseList {
+    public class WishResponseList {
         int id;
         String title;
         String contents;
         String writer;
         boolean clear;
         String color;
+
+        public int getId() {
+            return id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getContents() {
+            return contents;
+        }
+
+        public String getWriter() {
+            return writer;
+        }
+
+        public boolean isClear() {
+            return clear;
+        }
+
+        public String getColor() {
+            return color;
+        }
     }
 }
