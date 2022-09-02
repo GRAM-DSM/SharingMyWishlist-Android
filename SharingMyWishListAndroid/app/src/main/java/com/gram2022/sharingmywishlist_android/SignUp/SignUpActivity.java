@@ -8,11 +8,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.gram2022.sharingmywishlist_android.API.API;
+import com.gram2022.sharingmywishlist_android.API.APIProvider;
+import com.gram2022.sharingmywishlist_android.Main.MainActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivitySignUpBinding;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -31,18 +39,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void initGoToSignInTextView() {
         binding.tvSignUpGoToSignIn.setOnClickListener(view -> {
-            Intent intent = new Intent(getBaseContext(), SignInActivity.class);
-            startActivity(intent);
-            finish();
+            startIntent(SignInActivity.class);
         });
     }
 
     private void initSignUpButton() {
         binding.btnSignUpSignUp.setOnClickListener(view -> {
             if (checkTextFormat()) {
-                Toast.makeText(this, "Success !!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Failed..", Toast.LENGTH_SHORT).show();
+                startSignUp(getUserId(), getNickName(), getPassword());
             }
         });
     }
@@ -54,11 +58,6 @@ public class SignUpActivity extends AppCompatActivity {
         String nickName = getNickName();
         String password = getPassword();
         String repeatPassword = getRepeatPassword();
-
-        Log.d(TAG, userId);
-        Log.d(TAG, nickName);
-        Log.d(TAG, password);
-        Log.d(TAG, repeatPassword);
 
         binding.textInputLayoutSignUpUserId.setHelperText(null);
         binding.textInputLayoutSignUpNickname.setHelperText(null);
@@ -102,8 +101,30 @@ public class SignUpActivity extends AppCompatActivity {
         return binding.etSignUpRepeatPassword.getText().toString().replace(" ", "");
     }
 
-    private void setHelperText(TextInputLayout view, String text) {
-        view.setHelperText(text);
+    private void startSignUp(String userId, String nickName, String password) {
+        Log.d(TAG, "startSignUp() has called");
+
+        SignUpRequest signUpRequest = new SignUpRequest(userId, nickName, password);
+        API api = APIProvider.getInstance().create(API.class);
+        api.signUp(signUpRequest).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "signUp succeed, userId : " + userId);
+                    startIntent(MainActivity.class);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e(TAG, "signUp failed", t);
+                showSnackBar(getString(R.string.signIn_cannotSignUp));
+            }
+        });
+    }
+
+    private void showSnackBar(String text) {
+        Snackbar.make(binding.getRoot(), text, Snackbar.LENGTH_SHORT).show();
     }
 
     private void startIntent(Class to) {

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
 import com.gram2022.sharingmywishlist_android.Main.MainActivity;
@@ -83,8 +85,13 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
                 Log.e(TAG, "signIn failed", t);
+                showSnackBar(getString(R.string.signIn_cannotSignIn));
             }
         });
+    }
+
+    private void showSnackBar(String text) {
+        Snackbar.make(binding.getRoot(), text, Snackbar.LENGTH_SHORT).show();
     }
 
     private String getUserId() {
