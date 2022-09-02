@@ -112,7 +112,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "signUp succeed, userId : " + userId);
-                    startIntent(MainActivity.class);
+                    startIntent(SignInActivity.class);
                 }
             }
 
