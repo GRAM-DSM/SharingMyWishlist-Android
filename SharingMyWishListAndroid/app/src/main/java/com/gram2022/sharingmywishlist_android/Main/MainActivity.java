@@ -1,4 +1,4 @@
-package com.gram2022.sharingmywishlist_android;
+package com.gram2022.sharingmywishlist_android.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignIn.SignInActivity">
+    tools:context=".SignUp.SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout_signIn_userId"
+            android:id="@+id/textInputLayout_signUp_userId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -27,10 +27,10 @@
             app:helperTextTextColor="@color/light_red">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_signIn_userId"
+                android:id="@+id/et_signUp_userId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:hint="@string/signIn_userId"
+                android:hint="@string/signUp_userId"
                 android:inputType="text"
                 android:text=""
                 android:textSize="18sp" />
@@ -38,7 +38,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout_signIn_password"
+            android:id="@+id/textInputLayout_signUp_nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -46,32 +46,72 @@
             app:helperTextTextColor="@color/light_red">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_signIn_password"
+                android:id="@+id/et_signUp_nickName"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:hint="@string/signIn_password"
+                android:hint="@string/signUp_nickName"
+                android:inputType="text"
+                android:text=""
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_signUp_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/light_red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signUp_password"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/signUp_password"
                 android:inputType="textPassword"
+                android:text=""
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_signUp_repeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/light_red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_signUp_repeatPassword"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/signUp_repeatPassword"
+                android:inputType="textPassword"
+                android:text=""
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_signIn_signIn"
+            android:id="@+id/btn_signUp_signUp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/signIn"
+            android:text="@string/signUp"
             android:textAllCaps="false"
             android:textColor="@color/light_blue"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tv_signIn_goToSignUp"
+            android:id="@+id/tv_signUp_goToSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/signIn_goToSignUp"
+            android:text="@string/signUp_goToSignIn"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
