@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -64,16 +65,16 @@ public class SignUpActivity extends AppCompatActivity {
         binding.textInputLayoutSignUpPassword.setHelperText(null);
         binding.textInputLayoutSignUpRepeatPassword.setHelperText(null);
 
-        if (userId.equals("") || userId.equals(null)) {
+        if (TextUtils.isEmpty(userId)) {
             binding.textInputLayoutSignUpUserId.setHelperText(errorMessage);
         }
-        if (nickName.equals("") || nickName.equals(null)) {
+        if (TextUtils.isEmpty(nickName)) {
             binding.textInputLayoutSignUpNickname.setHelperText(errorMessage);
         }
-        if (password.equals("") || password.equals(null)) {
+        if (TextUtils.isEmpty(password)) {
             binding.textInputLayoutSignUpPassword.setHelperText(errorMessage);
         }
-        if (repeatPassword.equals("") || repeatPassword.equals(null)) {
+        if (TextUtils.isEmpty(repeatPassword)) {
             binding.textInputLayoutSignUpRepeatPassword.setHelperText(errorMessage);
         }
         if (!password.equals(repeatPassword)) {
