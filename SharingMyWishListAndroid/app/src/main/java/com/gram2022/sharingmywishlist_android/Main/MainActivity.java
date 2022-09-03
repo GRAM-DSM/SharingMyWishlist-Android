@@ -25,8 +25,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     final String TAG = this.getClass().getSimpleName();
-    private ActivityMainBinding binding;
-    private ArrayList<WishAllResponse> dataList;
+    ActivityMainBinding binding;
+    ArrayList<WishAllResponse> dataList;
+    ItemAdapter itemAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
         dataList = new ArrayList<>();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
-        ItemAdapter itemAdapter = new ItemAdapter(dataList, getBaseContext());
+        itemAdapter = new ItemAdapter(dataList, getBaseContext());
 
         binding.rvMain.setLayoutManager(linearLayoutManager);
         binding.rvMain.setAdapter(itemAdapter);
+
     }
 
     private void getWishAll() {
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "getWishAll() success!");
                     ArrayList<WishAllResponse> list = response.body();
                     dataList.addAll(list);
+                    itemAdapter.notifyDataSetChanged();
                 }
             }
 
