@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     final String TAG = this.getClass().getSimpleName();
     private ActivityMainBinding binding;
     private ArrayList<WishAllResponse> dataList;
-    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         initItemAdapter();
-
         getWishAll();
-
     }
 
     private void initItemAdapter() {
