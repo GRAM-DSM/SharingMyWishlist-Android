@@ -56,16 +56,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse.WishResponseList>() {
+        api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse>() {
             @Override
-            public void onResponse(Call<WishAllResponse.WishResponseList> call, Response<WishAllResponse.WishResponseList> response) {
+            public void onResponse(Call<WishAllResponse> call, Response<WishAllResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d(TAG, gson.fromJson(response.toString(), WisAllResponse.WishResponseList.class));
+                    Log.d(TAG, "" + response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<WishAllResponse.WishResponseList> call, Throwable t) {
+            public void onFailure(Call<WishAllResponse> call, Throwable t) {
 
             }
         });
