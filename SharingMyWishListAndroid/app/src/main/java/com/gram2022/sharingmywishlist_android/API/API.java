@@ -5,6 +5,8 @@ import com.gram2022.sharingmywishlist_android.SignIn.SignInRequest;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInResponse;
 import com.gram2022.sharingmywishlist_android.SignUp.SignUpRequest;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -20,5 +22,5 @@ public interface API {
     Call<Void> signUp(@Body SignUpRequest signUpRequest);
 
     @GET("/wish/all")
-    Call<WishAllResponse> getAll(@Header("Authorization") String accessToken);
+    Call<ArrayList<WishAllResponse>> getAll(@Header("Authorization") String accessToken);
 }

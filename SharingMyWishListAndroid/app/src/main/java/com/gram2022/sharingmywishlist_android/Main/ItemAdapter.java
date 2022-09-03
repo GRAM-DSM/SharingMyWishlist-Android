@@ -19,11 +19,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     final String TAG = this.getClass().getSimpleName();
 
-    ArrayList<WishAllResponse.WishResponseList> dataList;
+    ArrayList<WishAllResponse> dataList;
 
     Context context;
 
-    public ItemAdapter(ArrayList<WishAllResponse.WishResponseList> dataList, Context context) {
+    public ItemAdapter(ArrayList<WishAllResponse> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
     }
@@ -54,7 +54,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             itemBinding = binding;
         }
 
-        void bindItem(WishAllResponse.WishResponseList item, int position) {
+        void bindItem(WishAllResponse item, int position) {
             String color = item.getColor();
             setBackgroundTint(color);
 

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     final String TAG = this.getClass().getSimpleName();
     private ActivityMainBinding binding;
-    private ArrayList<WishAllResponse.WishResponseList> dataList;
+    private ArrayList<WishAllResponse> dataList;
     private Gson gson;
 
     @Override
@@ -55,18 +55,19 @@ public class MainActivity extends AppCompatActivity {
         API api = APIProvider.getInstance().create(API.class);
 
 
-
-        api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse>() {
+        api.getAll(SignInActivity.accessToken).enqueue(new Callback<ArrayList<WishAllResponse>>() {
             @Override
-            public void onResponse(Call<WishAllResponse> call, Response<WishAllResponse> response) {
+            public void onResponse(Call<ArrayList<WishAllResponse>> call, Response<ArrayList<WishAllResponse>> response) {
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "" + response.body());
+                    Log.d(TAG, "getWishAll() success!");
+                    ArrayList<WishAllResponse> list = response.body();
+                    dataList.addAll(list);
                 }
             }
 
             @Override
-            public void onFailure(Call<WishAllResponse> call, Throwable t) {
-
+            public void onFailure(Call<ArrayList<WishAllResponse>> call, Throwable t) {
+                Log.e(TAG, "getWishAll() failure..", t);
             }
         });
     }

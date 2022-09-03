@@ -1,39 +1,34 @@
 package com.gram2022.sharingmywishlist_android.Main;
 
 public class WishAllResponse {
+    int id;
+    String title;
+    String contents;
+    String writer;
+    boolean clear;
+    String color;
 
-    WishResponseList wishResponseList;
+    public int getId() {
+        return id;
+    }
 
-    public class WishResponseList {
-        int id;
-        String title;
-        String contents;
-        String writer;
-        boolean clear;
-        String color;
+    public String getTitle() {
+        return title;
+    }
 
-        public int getId() {
-            return id;
-        }
+    public String getContents() {
+        return contents;
+    }
 
-        public String getTitle() {
-            return title;
-        }
+    public String getWriter() {
+        return writer;
+    }
 
-        public String getContents() {
-            return contents;
-        }
+    public boolean isClear() {
+        return clear;
+    }
 
-        public String getWriter() {
-            return writer;
-        }
-
-        public boolean isClear() {
-            return clear;
-        }
-
-        public String getColor() {
-            return color;
-        }
+    public String getColor() {
+        return color;
     }
 }
