@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class SignInActivity extends AppCompatActivity {
 
     final String TAG = this.getClass().getSimpleName();
     ActivitySignInBinding binding;
+    public static String accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +59,10 @@ public class SignInActivity extends AppCompatActivity {
         binding.textInputLayoutSignInUserId.setHelperText(null);
         binding.textInputLayoutSignInPassword.setHelperText(null);
 
-        if (userId.equals("") || userId.equals(null)) {
+        if (TextUtils.isEmpty(userId)) {
             binding.textInputLayoutSignInUserId.setHelperText(errorMessage);
         }
-        if (password.equals("") || password.equals(null)) {
+        if (TextUtils.isEmpty(password)) {
             binding.textInputLayoutSignInPassword.setHelperText(errorMessage);
         } else {
             return true;
@@ -78,6 +80,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "signIn succeed, userId : " + userId + ", accessToken : " + response.body().accessToken);
+                    accessToken = response.body().getAccessToken();
                     startIntent(MainActivity.class);
                 }
             }

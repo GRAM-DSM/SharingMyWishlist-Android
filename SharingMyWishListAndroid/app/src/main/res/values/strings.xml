@@ -7,6 +7,7 @@
     <string name="signIn_userId">ID</string>
     <string name="signIn_password">비밀번호</string>
     <string name="signIn_goToSignUp">아직 계정이 없으신가요?</string>
+    <string name="signIn_cannotSignIn">로그인할 수 없습니다</string>
 
     <string name="signUp_userId">ID</string>
     <string name="signUp_nickName">Nickname</string>
@@ -15,4 +16,6 @@
     <string name="signUp_goToSignIn">이미 계정이 있으신가요?</string>
     <string name="signUp_blankError">정보를 입력해 주세요</string>
     <string name="signUp_repeatPasswordError">비밀번호가 일치하지 않습니다</string>
+    <string name="signIn_cannotSignUp">회원가입할 수 없습니다</string>
+
 </resources>

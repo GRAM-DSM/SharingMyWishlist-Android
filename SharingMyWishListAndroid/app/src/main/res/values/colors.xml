@@ -9,4 +9,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_red">#FF5151</color>
     <color name="light_blue">#00A6FF</color>
+    <color name="light_gray">#8B8B8B</color>
+
+    <color name="bg_nor">#F8F8F8</color>
+    <color name="bg_nor_stroke">#8C8C8C</color>
+    <color name="bg_red">#FFC9C9</color>
+    <color name="bg_red_stroke">#FF4747</color>
+    <color name="bg_gre">#D6FFCF</color>
+    <color name="bg_gre_stroke">#62FF47</color>
+    <color name="bg_blu">#AFD5FF</color>
+    <color name="bg_blu_stroke">#489FFF</color>
+
 </resources>
