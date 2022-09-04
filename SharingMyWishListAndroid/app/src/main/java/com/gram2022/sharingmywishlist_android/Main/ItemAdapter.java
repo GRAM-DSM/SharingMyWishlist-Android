@@ -21,11 +21,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     final String TAG = this.getClass().getSimpleName();
 
-    ArrayList<WishAllResponse> dataList;
+    ArrayList<WishAllResponse.WishResponseList> dataList;
 
     Context context;
 
-    public ItemAdapter(ArrayList<WishAllResponse> dataList, Context context) {
+    public ItemAdapter(ArrayList<WishAllResponse.WishResponseList> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
     }
@@ -39,6 +39,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder");
         holder.bindItem(dataList.get(position), position);
     }
 
@@ -56,7 +57,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             itemBinding = binding;
         }
 
-        void bindItem(WishAllResponse item, int position) {
+        void bindItem(WishAllResponse.WishResponseList item, int position) {
 
             Log.d(TAG, "id : " + item.getId());
             Log.d(TAG, "title : " + item.getTitle());

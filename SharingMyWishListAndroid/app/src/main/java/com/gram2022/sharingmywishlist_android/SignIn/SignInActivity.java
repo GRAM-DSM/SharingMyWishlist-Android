@@ -24,7 +24,7 @@ public class SignInActivity extends AppCompatActivity {
 
     final String TAG = this.getClass().getSimpleName();
     ActivitySignInBinding binding;
-    public static String accessToken;
+    public static  String accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +79,8 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d(TAG, "signIn succeed, userId : " + userId + ", accessToken : " + response.body().accessToken);
-                    accessToken = response.body().getAccessToken();
+                    accessToken = "Bearer " + response.body().getAccessToken();
+                    Log.d(TAG, "signIn succeed, userId : " + userId + ", accessToken : " + accessToken);
                     startIntent(MainActivity.class);
                 }
             }

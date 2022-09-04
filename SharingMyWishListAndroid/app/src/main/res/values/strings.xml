@@ -18,4 +18,6 @@
     <string name="signUp_repeatPasswordError">비밀번호가 일치하지 않습니다</string>
     <string name="signIn_cannotSignUp">회원가입할 수 없습니다</string>
 
+    <string name="main_clearDialog">위시를 달성하시겠습니까?</string>
+
 </resources>

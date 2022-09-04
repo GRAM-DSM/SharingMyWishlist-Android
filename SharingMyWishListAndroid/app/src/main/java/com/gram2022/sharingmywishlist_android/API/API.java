@@ -22,5 +22,5 @@ public interface API {
     Call<Void> signUp(@Body SignUpRequest signUpRequest);
 
     @GET("/wish/all")
-    Call<ArrayList<WishAllResponse>> getAll(@Header("Authorization") String accessToken);
+    Call<WishAllResponse> getAll(@Header("Authorization") String accessToken);
 }

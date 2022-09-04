@@ -23,10 +23,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     final String TAG = this.getClass().getSimpleName();
     ActivityMainBinding binding;
-    ArrayList<WishAllResponse> dataList;
+    ArrayList<WishAllResponse.WishResponseList> dataList;
     ItemAdapter itemAdapter;
 
     @Override
@@ -47,26 +46,26 @@ public class MainActivity extends AppCompatActivity {
 
         binding.rvMain.setLayoutManager(linearLayoutManager);
         binding.rvMain.setAdapter(itemAdapter);
-
     }
 
     private void getWishAll() {
         API api = APIProvider.getInstance().create(API.class);
 
-
-        api.getAll(SignInActivity.accessToken).enqueue(new Callback<ArrayList<WishAllResponse>>() {
+        api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse>() {
             @Override
-            public void onResponse(Call<ArrayList<WishAllResponse>> call, Response<ArrayList<WishAllResponse>> response) {
+            public void onResponse(Call<WishAllResponse> call, Response<WishAllResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "getWishAll() success!");
-                    ArrayList<WishAllResponse> list = response.body();
-                    dataList.addAll(list);
+                    WishAllResponse body = response.body();
+                    if(body != null)
+                        Log.d(TAG, "body : " + body.getWishResponseList().toString());
+
                     itemAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<WishAllResponse>> call, Throwable t) {
+            public void onFailure(Call<WishAllResponse> call, Throwable t) {
                 Log.e(TAG, "getWishAll() failure..", t);
             }
         });
