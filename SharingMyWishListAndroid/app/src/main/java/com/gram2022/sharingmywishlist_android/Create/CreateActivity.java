@@ -48,16 +48,16 @@ public class CreateActivity extends AppCompatActivity {
                 switch (id) {
                     default:
                     case R.id.radio_create_nor:
-                        color = String.valueOf(R.id.radio_create_nor);
+                        color = getString(R.string.create_wish_nor);
                         break;
                     case R.id.radio_create_red:
-                        color = String.valueOf(R.id.radio_create_red);
+                        color = getString(R.string.create_wish_red);
                         break;
                     case R.id.radio_create_gre:
-                        color = String.valueOf(R.id.radio_create_gre);
+                        color = getString(R.string.create_wish_gre);
                         break;
                     case R.id.radio_create_blu:
-                        color = String.valueOf(R.id.radio_create_blu);
+                        color = getString(R.string.create_wish_blu);
                         break;
                 }
             }
