@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -73,6 +74,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         });
     }
 
+    public void clearWish() {
+        dataList.clear();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         RvMainItemBinding itemBinding;
@@ -135,11 +140,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 disableCheck(itemBinding.chkRvMainItem);
             } else {
                 itemBinding.chkRvMainItem.setChecked(false);
+                enableCheck(itemBinding.chkRvMainItem);
             }
         }
 
+        private void enableCheck(View view) {
+            view.setEnabled(true);
+            view.setAlpha(1);
+        }
+
         private void disableCheck(View view) {
-            Log.d(TAG, "disableCheck: called");
             view.setEnabled(false);
             view.setAlpha((float) 0.4);
         }
