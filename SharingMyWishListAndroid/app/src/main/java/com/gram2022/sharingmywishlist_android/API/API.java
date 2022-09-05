@@ -30,5 +30,5 @@ public interface API {
     Call<Void> clear(@Header("Authorization") String accessToken, @Path("id") int id);
 
     @POST("/wish/create")
-    Call<Void> clear(@Header("Authorization") String accessToken, @Body CreateRequest createRequest);
+    Call<Void> create(@Header("Authorization") String accessToken, @Body CreateRequest createRequest);
 }
