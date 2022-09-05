@@ -1,5 +1,6 @@
 package com.gram2022.sharingmywishlist_android.API;
 
+import com.gram2022.sharingmywishlist_android.Create.CreateRequest;
 import com.gram2022.sharingmywishlist_android.Main.WishAllResponse;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInRequest;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInResponse;
@@ -27,4 +28,7 @@ public interface API {
 
     @PATCH("/wish/clear/{id}")
     Call<Void> clear(@Header("Authorization") String accessToken, @Path("id") int id);
+
+    @POST("/wish/create")
+    Call<Void> clear(@Header("Authorization") String accessToken, @Body CreateRequest createRequest);
 }

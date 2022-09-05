@@ -23,4 +23,6 @@
     <string name="main_clearDialog_positive">예</string>
     <string name="main_clearDialog_neutral">취소</string>
 
+    <string name="create_title">위시 제목</string>
+    <string name="create_contents">위시 내용</string>
 </resources>
