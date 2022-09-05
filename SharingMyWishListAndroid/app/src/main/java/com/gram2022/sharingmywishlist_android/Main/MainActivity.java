@@ -34,10 +34,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    final String TAG = this.getClass().getSimpleName();
+    static final String TAG = MainActivity.class.getSimpleName();
     ActivityMainBinding binding;
-    ArrayList<WishAllResponse.WishResponseList> dataList;
-    ItemAdapter itemAdapter;
+    static ArrayList<WishAllResponse.WishResponseList> dataList;
+    static ItemAdapter itemAdapter;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Toolbar toolbar_main;
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         binding.rvMain.setAdapter(itemAdapter);
     }
 
-    private void getWishAll() {
+    public static void getWishAll() {
         API api = APIProvider.getInstance().create(API.class);
 
         api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse>() {
