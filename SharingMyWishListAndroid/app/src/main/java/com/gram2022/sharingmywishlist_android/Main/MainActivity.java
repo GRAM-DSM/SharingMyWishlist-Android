@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     ArrayList<WishAllResponse.WishResponseList> dataList;
     ItemAdapter itemAdapter;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     Toolbar toolbar_main;
     ActionBar actionBar_main;
 
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        initSharedPreferences();
         initToolbar();
 
         dataList = new ArrayList<>();
@@ -53,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         getWishAll();
         initItemAdapter();
         initSwipeRefreshLayout();
+    }
+
+    private void initSharedPreferences() {
+        sharedPreferences = getSharedPreferences("autoSignIn", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     private void initSwipeRefreshLayout() {
@@ -83,16 +91,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_main_add:
-                Intent intent = new Intent(getBaseContext(), CreateActivity.class);
-                startActivity(intent);
+                Intent createIntent = new Intent(getBaseContext(), CreateActivity.class);
+                startActivity(createIntent);
                 finish();
                 return true;
             case R.id.menu_main_signOut:
-                // TODO
+                Intent signOutIntent = new Intent(getBaseContext(), SignInActivity.class);
+                startActivity(signOutIntent);
+                finish();
+                clearSharedPreferences();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void clearSharedPreferences() {
+        sharedPreferences.edit().clear().commit();
     }
 
     private void initItemAdapter() {
