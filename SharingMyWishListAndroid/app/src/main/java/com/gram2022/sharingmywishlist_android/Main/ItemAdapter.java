@@ -90,19 +90,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         private void showDialog(String title, Context context) {
             // TODO Dialog
+            
         }
 
         private void setClear(boolean isClear) {
             if (isClear) {
                 // TODO if cleared
                 itemBinding.chkRvMainItem.setChecked(true);
+                disableCheck(itemBinding.chkRvMainItem);
             } else {
                 itemBinding.chkRvMainItem.setChecked(false);
             }
         }
 
-        private void disableCheck() {
-
+        private void disableCheck(View view) {
+            view.setEnabled(false);
+            view.setAlpha((float) 0.4);
         }
 
         private void setBackgroundTint(String color) {
