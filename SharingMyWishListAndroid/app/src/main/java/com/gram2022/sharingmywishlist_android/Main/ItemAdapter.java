@@ -107,16 +107,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         private void setBackgroundTint(String color) {
             switch (color) {
                 case "wish-nor":
-                    itemBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.bg_nor));
+                    itemBinding.getRoot().setCardBackgroundColor(ContextCompat.getColor(context, R.color.bg_nor));
                     break;
                 case "wish-red":
-                    itemBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.bg_red));
+                    itemBinding.getRoot().setCardBackgroundColor(ContextCompat.getColor(context, R.color.bg_red));
                     break;
                 case "wish-gre":
-                    itemBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.bg_gre));
+                    itemBinding.getRoot().setCardBackgroundColor(ContextCompat.getColor(context, R.color.bg_gre));
                     break;
                 case "wish-blu":
-                    itemBinding.getRoot().setBackgroundColor(ContextCompat.getColor(context, R.color.bg_blu));
+                    itemBinding.getRoot().setCardBackgroundColor(ContextCompat.getColor(context, R.color.bg_blu));
                     break;
             }
         }
