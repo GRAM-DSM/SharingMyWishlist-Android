@@ -20,8 +20,12 @@
     <string name="signIn_cannotSignUp">회원가입할 수 없습니다</string>
 
     <string name="main_clearDialog">위시를 달성하시겠습니까?</string>
-    <string name="main_clearDialog_positive">예</string>
-    <string name="main_clearDialog_neutral">취소</string>
+    <string name="main_deleteDialog">삭제하시겠습니까?</string>
+    <string name="main_delete_success">삭제 성공!</string>
+    <string name="main_delete_failure">삭제 실패..</string>
+
+    <string name="main_dialog_positive">예</string>
+    <string name="main_dialog_neutral">취소</string>
 
     <string name="create_title">위시 제목</string>
     <string name="create_title_formatError">제목의 공백은 허용되지 않습니다</string>
