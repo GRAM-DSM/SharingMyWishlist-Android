@@ -109,27 +109,28 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             itemBinding.chkRvMainItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                    builder.setTitle(R.string.main_clearDialog)
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext())
+                            .setTitle(R.string.main_clearDialog)
                             .setPositiveButton(R.string.main_clearDialog_positive, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     setClear(true);
                                     clear(item.getId());
                                 }
+                            })
+                            .setNeutralButton(R.string.main_clearDialog_neutral, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    setClear(false);
+                                }
+                            })
+                            .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+                                    setClear(false);
+                                }
                             });
-                    builder.setNeutralButton(R.string.main_clearDialog_neutral, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            setClear(false);
-                        }
-                    });
-                    builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            setClear(false);
-                        }
-                    }).show();
+                    builder.show();
                 }
             });
         }
