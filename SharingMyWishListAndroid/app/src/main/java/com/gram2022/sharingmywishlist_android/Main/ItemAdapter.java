@@ -131,11 +131,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext())
-                            .setTitle(R.string.main_deleteDialog)
+                            .setTitle(R.string.main_clearDialog)
                             .setPositiveButton(R.string.main_dialog_positive, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    delete(item.getId());
+                                    clear(item.getId());
+                                    disableCheck(itemBinding.chkRvMainItem);
                                 }
                             })
                             .setNeutralButton(R.string.main_dialog_neutral, new DialogInterface.OnClickListener() {
