@@ -1,15 +1,21 @@
 package com.gram2022.sharingmywishlist_android.Main;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.gson.Gson;
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
+import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityMainBinding;
 
@@ -29,12 +35,15 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     ArrayList<WishAllResponse.WishResponseList> dataList;
     ItemAdapter itemAdapter;
+    Toolbar toolbar_main;
+    ActionBar actionBar_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        initToolbar();
 
         dataList = new ArrayList<>();
 
@@ -42,6 +51,31 @@ public class MainActivity extends AppCompatActivity {
         initItemAdapter();
     }
 
+    private void initToolbar() {
+        toolbar_main = binding.toolbarMain;
+        setSupportActionBar(toolbar_main);
+        actionBar_main = getSupportActionBar();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_main_add:
+                // TODO
+                return true;
+            case R.id.menu_main_signOut:
+                // TODO
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void initItemAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
