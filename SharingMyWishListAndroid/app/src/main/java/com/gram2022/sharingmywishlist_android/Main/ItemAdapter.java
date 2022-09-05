@@ -61,6 +61,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         void bindItem(WishAllResponse.WishResponseList item, int position) {
 
+            Log.d(TAG, "==========");
             Log.d(TAG, "id : " + item.getId());
             Log.d(TAG, "title : " + item.getTitle());
             Log.d(TAG, "writer : " + item.getWriter());
