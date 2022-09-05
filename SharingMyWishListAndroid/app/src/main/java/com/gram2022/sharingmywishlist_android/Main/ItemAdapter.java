@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -73,6 +74,24 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             }
         });
     }
+    private void delete(int id) {
+        API api = APIProvider.getInstance().create(API.class);
+        api.delete(SignInActivity.accessToken, id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "delete() success!");
+                    Toast.makeText(context, R.string.main_delete_success, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "delete() failure..");
+                Toast.makeText(context, R.string.main_delete_failure, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     public void clearWish() {
         dataList.clear();
@@ -110,15 +129,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext())
-                            .setTitle(R.string.main_clearDialog)
-                            .setPositiveButton(R.string.main_clearDialog_positive, new DialogInterface.OnClickListener() {
+                            .setTitle(R.string.main_deleteDialog)
+                            .setPositiveButton(R.string.main_dialog_positive, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    setClear(true);
-                                    clear(item.getId());
+                                    delete(item.getId());
                                 }
                             })
-                            .setNeutralButton(R.string.main_clearDialog_neutral, new DialogInterface.OnClickListener() {
+                            .setNeutralButton(R.string.main_dialog_neutral, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     setClear(false);
@@ -131,6 +149,32 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                                 }
                             });
                     builder.show();
+                }
+            });
+            itemBinding.getRoot().setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext())
+                            .setTitle(R.string.main_deleteDialog)
+                            .setPositiveButton(R.string.main_dialog_positive, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    delete(item.getId());
+                                    notifyDataSetChanged();
+                                }
+                            })
+                            .setNeutralButton(R.string.main_dialog_neutral, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+                                }
+                            });
+                    builder.show();
+                    return true;
                 }
             });
         }
