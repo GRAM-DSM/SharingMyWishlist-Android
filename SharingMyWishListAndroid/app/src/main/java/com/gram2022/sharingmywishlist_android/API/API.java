@@ -5,13 +5,14 @@ import com.gram2022.sharingmywishlist_android.SignIn.SignInRequest;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInResponse;
 import com.gram2022.sharingmywishlist_android.SignUp.SignUpRequest;
 
-import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface API {
 
@@ -23,4 +24,7 @@ public interface API {
 
     @GET("/wish/all")
     Call<WishAllResponse> getAll(@Header("Authorization") String accessToken);
+
+    @PATCH("/wish/clear/{id}")
+    Call<Void> clear(@Header("Authorization") String accessToken, @Path("id") int id);
 }

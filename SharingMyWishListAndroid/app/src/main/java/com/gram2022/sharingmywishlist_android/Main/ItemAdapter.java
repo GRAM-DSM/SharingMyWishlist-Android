@@ -1,6 +1,7 @@
 package com.gram2022.sharingmywishlist_android.Main;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     public ItemAdapter(ArrayList<WishAllResponse.WishResponseList> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
+        Log.d(TAG, "ItemAdapter has called");
     }
 
     @NonNull

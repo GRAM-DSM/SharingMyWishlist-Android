@@ -3,6 +3,7 @@ package com.gram2022.sharingmywishlist_android.SignIn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,9 +23,11 @@ import retrofit2.Response;
 
 public class SignInActivity extends AppCompatActivity {
 
+    public static String accessToken;
     final String TAG = this.getClass().getSimpleName();
     ActivitySignInBinding binding;
-    public static  String accessToken;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class SignInActivity extends AppCompatActivity {
 
         initSignInButton();
         initGoToSignUpTextView();
+        initSharedPreferences();
+        initAutoSignIn();
     }
 
     private void initGoToSignUpTextView() {
@@ -45,6 +50,13 @@ public class SignInActivity extends AppCompatActivity {
     private void initSignInButton() {
         binding.btnSignInSignIn.setOnClickListener(view -> {
             if (checkTextFormat()) {
+                if (binding.chkSignInKeepSignIn.isChecked()) {
+                    Log.d(TAG, "Auto sign in checked, method started");
+                    editor.putBoolean("autoSignIn", true);
+                    editor.putString("userId", getUserId());
+                    editor.putString("password", getPassword());
+                    editor.commit();
+                }
                 startSignIn(getUserId(), getPassword());
             }
         });
@@ -70,6 +82,21 @@ public class SignInActivity extends AppCompatActivity {
         return false;
     }
 
+    private void initAutoSignIn() {
+        if (sharedPreferences.getBoolean("autoSignIn", false)) {
+            Log.d(TAG, "Auto sign in started");
+            startSignIn(sharedPreferences.getString("userId", null), sharedPreferences.getString("password", null));
+            Log.d(TAG, "userId : " + sharedPreferences.getString("userId", null));
+            Log.d(TAG, "password : " + sharedPreferences.getString("password", null));
+        }
+
+    }
+
+    private void initSharedPreferences() {
+        sharedPreferences = getSharedPreferences("autoSignIn", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+    }
+
     private void startSignIn(String userId, String password) {
         Log.d(TAG, "startSignIn() has called");
 
@@ -89,8 +116,13 @@ public class SignInActivity extends AppCompatActivity {
             public void onFailure(Call<SignInResponse> call, Throwable t) {
                 Log.e(TAG, "signIn failed", t);
                 showSnackBar(getString(R.string.signIn_cannotSignIn));
+                clearSharedPreferences();
             }
         });
+    }
+
+    private void clearSharedPreferences() {
+        sharedPreferences.edit().clear().commit();
     }
 
     private void showSnackBar(String text) {
