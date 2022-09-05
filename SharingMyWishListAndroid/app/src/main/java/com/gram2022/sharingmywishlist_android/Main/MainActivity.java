@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -49,6 +50,19 @@ public class MainActivity extends AppCompatActivity {
 
         getWishAll();
         initItemAdapter();
+        initSwipeRefreshLayout();
+    }
+
+    private void initSwipeRefreshLayout() {
+        binding.swipeRefreshLayoutMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                itemAdapter.clearWish();
+                getWishAll();
+                itemAdapter.notifyDataSetChanged();
+                binding.swipeRefreshLayoutMain.setRefreshing(false);
+            }
+        });
     }
 
     private void initToolbar() {
