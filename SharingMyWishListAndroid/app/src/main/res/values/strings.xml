@@ -20,5 +20,7 @@
     <string name="signIn_cannotSignUp">회원가입할 수 없습니다</string>
 
     <string name="main_clearDialog">위시를 달성하시겠습니까?</string>
+    <string name="main_clearDialog_positive">예</string>
+    <string name="main_clearDialog_neutral">취소</string>
 
 </resources>

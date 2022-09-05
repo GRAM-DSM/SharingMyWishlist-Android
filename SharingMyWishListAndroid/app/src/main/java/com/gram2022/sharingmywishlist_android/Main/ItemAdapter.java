@@ -1,8 +1,8 @@
 package com.gram2022.sharingmywishlist_android.Main;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gram2022.sharingmywishlist_android.API.API;
+import com.gram2022.sharingmywishlist_android.API.APIProvider;
 import com.gram2022.sharingmywishlist_android.R;
+import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.RvMainItemBinding;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
@@ -50,6 +56,23 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         return dataList.size();
     }
 
+    private void clear(int id) {
+        API api = APIProvider.getInstance().create(API.class);
+        api.clear(SignInActivity.accessToken, id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "clear() success!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.d(TAG, "clear() failure..");
+            }
+        });
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         RvMainItemBinding itemBinding;
@@ -78,24 +101,36 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             itemBinding.tvRvMainItemTitle.setText(item.getTitle());
             itemBinding.tvRvMainItemWriter.setText(item.getWriter());
             itemBinding.tvRvMainItemContents.setText(item.getContents());
-
-            initItemClear();
-        }
-
-        private void initItemClear() {
-            itemBinding.chkRvMainItem.setOnClickListener(view -> {
-                showDialog(String.valueOf(R.string.main_clearDialog), view.getContext());
+            itemBinding.chkRvMainItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setTitle(R.string.main_clearDialog)
+                            .setPositiveButton(R.string.main_clearDialog_positive, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    setClear(true);
+                                    clear(item.getId());
+                                }
+                            });
+                    builder.setNeutralButton(R.string.main_clearDialog_neutral, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            setClear(false);
+                        }
+                    });
+                    builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            setClear(false);
+                        }
+                    }).show();
+                }
             });
-        }
-
-        private void showDialog(String title, Context context) {
-            // TODO Dialog
-            
         }
 
         private void setClear(boolean isClear) {
             if (isClear) {
-                // TODO if cleared
                 itemBinding.chkRvMainItem.setChecked(true);
                 disableCheck(itemBinding.chkRvMainItem);
             } else {
@@ -104,6 +139,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         }
 
         private void disableCheck(View view) {
+            Log.d(TAG, "disableCheck: called");
             view.setEnabled(false);
             view.setAlpha((float) 0.4);
         }
