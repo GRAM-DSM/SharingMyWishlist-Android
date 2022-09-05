@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import com.google.gson.Gson;
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
+import com.gram2022.sharingmywishlist_android.Create.CreateActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityMainBinding;
@@ -81,7 +83,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_main_add:
-                // TODO
+                Intent intent = new Intent(getBaseContext(), CreateActivity.class);
+                startActivity(intent);
+                finish();
                 return true;
             case R.id.menu_main_signOut:
                 // TODO
@@ -103,13 +107,13 @@ public class MainActivity extends AppCompatActivity {
     private void getWishAll() {
         API api = APIProvider.getInstance().create(API.class);
 
-        api.getAll(SignInActivity.accessToken).enqueue (new Callback<WishAllResponse>() {
+        api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse>() {
             @Override
             public void onResponse(Call<WishAllResponse> call, Response<WishAllResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "getWishAll() success!");
                     List<WishAllResponse.WishResponseList> body = response.body().getWishResponseList();
-                    if(body != null) {
+                    if (body != null) {
                         Log.d(TAG, "body : " + body);
                         dataList.addAll(body);
                         itemAdapter.notifyDataSetChanged();

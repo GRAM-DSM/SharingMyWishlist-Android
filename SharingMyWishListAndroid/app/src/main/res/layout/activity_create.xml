@@ -6,4 +6,120 @@
     android:layout_height="match_parent"
     tools:context=".Create.CreateActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_create"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_primary"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_create"
+        app:title="Create Wish" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_create">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_create_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/light_red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_create_title"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/create_title"
+                android:inputType="text"
+                android:maxLength="30"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_create_contents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:helperTextEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_create_contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/create_contents"
+                android:inputType="textMultiLine"
+                android:maxLength="150"
+                android:scrollHorizontally="true"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup_create"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_create_nor"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_nor"
+                android:button="@null"
+                android:checked="true"
+                android:elevation="4dp" />
+
+            <RadioButton
+                android:id="@+id/radio_create_red"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_red"
+                android:button="@null"
+                android:elevation="4dp" />
+
+            <RadioButton
+                android:id="@+id/radio_create_gre"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_gre"
+                android:button="@null"
+                android:elevation="4dp" />
+
+            <RadioButton
+                android:id="@+id/radio_create_blu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_blu"
+                android:button="@null"
+                android:elevation="4dp" />
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
