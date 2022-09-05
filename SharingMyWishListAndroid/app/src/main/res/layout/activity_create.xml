@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            app:helperTextEnabled="true">
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/light_red">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_create_title"
@@ -68,6 +69,57 @@
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup_create"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_create_nor"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_nor"
+                android:button="@null"
+                android:checked="true"
+                android:elevation="4dp" />
+
+            <RadioButton
+                android:id="@+id/radio_create_red"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_red"
+                android:button="@null"
+                android:elevation="4dp" />
+
+            <RadioButton
+                android:id="@+id/radio_create_gre"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_gre"
+                android:button="@null"
+                android:elevation="4dp" />
+
+            <RadioButton
+                android:id="@+id/radio_create_blu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_blu"
+                android:button="@null"
+                android:elevation="4dp" />
+
+        </RadioGroup>
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
