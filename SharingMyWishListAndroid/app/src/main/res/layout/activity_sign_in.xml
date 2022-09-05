@@ -55,6 +55,14 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <CheckBox
+            android:id="@+id/chk_signIn_keepSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/signIn_keepSignedIn"
+            android:textSize="14sp" />
+
         <Button
             android:id="@+id/btn_signIn_signIn"
             android:layout_width="match_parent"
