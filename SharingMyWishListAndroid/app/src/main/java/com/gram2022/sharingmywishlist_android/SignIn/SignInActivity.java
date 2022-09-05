@@ -87,7 +87,6 @@ public class SignInActivity extends AppCompatActivity {
             Log.d(TAG, "Auto sign in started");
             startSignIn(sharedPreferences.getString("userId", null), sharedPreferences.getString("password", null));
             Log.d(TAG, "userId : " + sharedPreferences.getString("userId", null));
-            Log.d(TAG, "password : " + sharedPreferences.getString("password", null));
         }
 
     }
