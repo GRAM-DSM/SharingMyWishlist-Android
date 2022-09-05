@@ -82,6 +82,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "delete() success!");
                     Toast.makeText(context, R.string.main_delete_success, Toast.LENGTH_SHORT).show();
+                    clearWish();
+                    MainActivity.getWishAll();
                 }
             }
 
