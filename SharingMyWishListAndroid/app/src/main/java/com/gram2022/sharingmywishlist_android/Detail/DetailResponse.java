@@ -9,26 +9,7 @@ public class DetailResponse {
     String writer;
     boolean clear;
     String color;
-
-    List<Comments> comments;
-
-    private class Comments {
-        int id;
-        String nickName;
-        String comment;
-
-        public int getId() {
-            return id;
-        }
-
-        public String getNickName() {
-            return nickName;
-        }
-
-        public String getComment() {
-            return comment;
-        }
-    }
+    String createdAt;
 
     public int getId() {
         return id;
@@ -54,7 +35,7 @@ public class DetailResponse {
         return color;
     }
 
-    public List<Comments> getComments() {
-        return comments;
+    public String getCreatedAt() {
+        return createdAt;
     }
 }
