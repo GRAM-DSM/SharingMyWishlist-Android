@@ -10,10 +10,11 @@
         <entry key="app/src/main/res/drawable/bg_item_blu.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/bg_item_nor.xml" value="0.1345" />
         <entry key="app/src/main/res/layout/activity_create.xml" value="0.2462534488398136" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.27336181640625" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.2980255126953125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2900192260742188" />
+        <entry key="app/src/main/res/layout/rv_detail_comment_item.xml" value="0.28020833333333334" />
         <entry key="app/src/main/res/layout/rv_main_item.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_create.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/menu/menu_detail.xml" value="0.11" />

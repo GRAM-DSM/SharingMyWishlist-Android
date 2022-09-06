@@ -56,12 +56,8 @@ public class WishDetailActivity extends AppCompatActivity {
             case R.id.menu_detail_back:
                 finish();
                 return true;
-            case R.id.menu_detail_edit:
-                // TODO
-                Toast.makeText(this, "EDIT!", Toast.LENGTH_SHORT).show();
-                return true;
             default:
-            return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
     }
 
