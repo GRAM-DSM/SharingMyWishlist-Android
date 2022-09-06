@@ -3,6 +3,7 @@ package com.gram2022.sharingmywishlist_android.Main;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
+import com.gram2022.sharingmywishlist_android.Detail.WishDetailActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.RvMainItemBinding;
@@ -178,6 +180,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                             });
                     builder.show();
                     return true;
+                }
+            });
+            itemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent wishDetailIntent = new Intent(context, WishDetailActivity.class);
+                    context.startActivity(wishDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
             });
         }

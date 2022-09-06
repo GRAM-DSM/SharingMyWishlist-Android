@@ -2,7 +2,7 @@ package com.gram2022.sharingmywishlist_android.Detail;
 
 import java.util.List;
 
-public class DetailResponse {
+public class WishDetailResponse {
     int id;
     String title;
     String contents;
