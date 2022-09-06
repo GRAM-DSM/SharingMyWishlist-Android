@@ -8,7 +8,7 @@
         android:title="Back"
         app:showAsAction="always" />
     <item
-        android:id="@+id/menu_main_signOut"
+        android:id="@+id/menu_detail_edit"
         android:icon="@drawable/ic_baseline_edit_24"
         android:title="Edit"
         app:showAsAction="always" />
