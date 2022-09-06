@@ -12,6 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_primary"
         android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/layout_create"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,6 +20,7 @@
         app:title="Create Wish" />
 
     <LinearLayout
+        android:id="@+id/layout_create"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

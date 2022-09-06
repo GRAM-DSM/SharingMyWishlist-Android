@@ -1,6 +1,7 @@
 package com.gram2022.sharingmywishlist_android.API;
 
 import com.gram2022.sharingmywishlist_android.Create.CreateRequest;
+import com.gram2022.sharingmywishlist_android.Detail.WishDetailResponse;
 import com.gram2022.sharingmywishlist_android.Main.WishAllResponse;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInRequest;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInResponse;
@@ -14,7 +15,6 @@ import retrofit2.http.Header;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface API {
 
@@ -35,4 +35,7 @@ public interface API {
 
     @DELETE("/wish/delete/{id}")
     Call<Void> delete(@Header("Authorization") String accessToken, @Path("id") int id);
+
+    @GET("/wish/{id}")
+    Call<WishDetailResponse> getDetail(@Header("Authorization") String accessToken, @Path("id") int id);
 }
