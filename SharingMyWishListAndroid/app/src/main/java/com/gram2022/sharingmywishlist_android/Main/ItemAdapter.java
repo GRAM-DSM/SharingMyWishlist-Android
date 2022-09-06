@@ -186,6 +186,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Intent wishDetailIntent = new Intent(context, WishDetailActivity.class);
+                    wishDetailIntent.putExtra("wishId", item.getId());
                     context.startActivity(wishDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
             });

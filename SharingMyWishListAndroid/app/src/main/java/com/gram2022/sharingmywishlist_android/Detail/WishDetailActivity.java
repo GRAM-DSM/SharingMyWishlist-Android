@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.gram2022.sharingmywishlist_android.Main.ItemAdapter;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityDetailBinding;
 
@@ -19,6 +20,7 @@ public class WishDetailActivity extends AppCompatActivity {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Log.d(TAG, "" + wishId);
-
+        wishId = getIntent().getIntExtra("wishId", 0);
+        Log.d(TAG, "wishId : " + wishId);
     }
 }
