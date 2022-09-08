@@ -1,22 +1,17 @@
 package com.gram2022.sharingmywishlist_android.SignUp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
-import com.gram2022.sharingmywishlist_android.Main.MainActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivitySignUpBinding;

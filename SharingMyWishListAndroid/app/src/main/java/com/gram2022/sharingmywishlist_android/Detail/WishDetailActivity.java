@@ -1,18 +1,16 @@
 package com.gram2022.sharingmywishlist_android.Detail;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.gram2022.sharingmywishlist_android.Main.ItemAdapter;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityDetailBinding;
 
@@ -50,6 +48,7 @@ public class WishDetailActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

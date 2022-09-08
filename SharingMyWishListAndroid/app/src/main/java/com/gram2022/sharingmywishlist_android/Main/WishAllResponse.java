@@ -5,6 +5,10 @@ import java.util.List;
 public class WishAllResponse {
     List<WishResponseList> wishResponseList;
 
+    public List<WishResponseList> getWishResponseList() {
+        return wishResponseList;
+    }
+
     public class WishResponseList {
         int id;
         String title;
@@ -36,9 +40,5 @@ public class WishAllResponse {
         public String getColor() {
             return color;
         }
-    }
-
-    public List<WishResponseList> getWishResponseList() {
-        return wishResponseList;
     }
 }
