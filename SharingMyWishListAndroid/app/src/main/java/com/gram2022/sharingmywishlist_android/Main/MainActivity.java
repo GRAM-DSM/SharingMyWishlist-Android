@@ -1,12 +1,6 @@
 package com.gram2022.sharingmywishlist_android.Main;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,17 +8,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.gson.Gson;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
 import com.gram2022.sharingmywishlist_android.Create.CreateActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityMainBinding;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +28,42 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+@SuppressLint("StaticFieldLeak")
 public class MainActivity extends AppCompatActivity {
     static final String TAG = MainActivity.class.getSimpleName();
-    ActivityMainBinding binding;
     static ArrayList<WishAllResponse.WishResponseList> dataList;
-    static ItemAdapter itemAdapter;
+    static MainItemAdapter mainItemAdapter;
+    ActivityMainBinding binding;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Toolbar toolbar_main;
     ActionBar actionBar_main;
+
+    public static void getWishAll() {
+        API api = APIProvider.getInstance().create(API.class);
+
+        api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(@NonNull Call<WishAllResponse> call, @NonNull Response<WishAllResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "getWishAll() success!");
+                    assert response.body() != null;
+                    List<WishAllResponse.WishResponseList> body = response.body().getWishResponseList();
+                    if (body != null) {
+                        Log.d(TAG, "body : " + body);
+                        dataList.addAll(body);
+                        mainItemAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<WishAllResponse> call, @NonNull Throwable t) {
+                Log.e(TAG, "getWishAll() failure..", t);
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +85,13 @@ public class MainActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void initSwipeRefreshLayout() {
-        binding.swipeRefreshLayoutMain.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                itemAdapter.clearWish();
-                getWishAll();
-                itemAdapter.notifyDataSetChanged();
-                binding.swipeRefreshLayoutMain.setRefreshing(false);
-            }
+        binding.swipeRefreshLayoutMain.setOnRefreshListener(() -> {
+            mainItemAdapter.clearWish();
+            getWishAll();
+            mainItemAdapter.notifyDataSetChanged();
+            binding.swipeRefreshLayoutMain.setRefreshing(false);
         });
     }
 
@@ -87,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -107,39 +128,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clearSharedPreferences() {
-        sharedPreferences.edit().clear().commit();
+        sharedPreferences.edit().clear().apply();
     }
 
     private void initItemAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
-        itemAdapter = new ItemAdapter(dataList, getBaseContext());
-
         binding.rvMain.setLayoutManager(linearLayoutManager);
-        itemAdapter = new ItemAdapter(dataList, getBaseContext());
-        binding.rvMain.setAdapter(itemAdapter);
-    }
-
-    public static void getWishAll() {
-        API api = APIProvider.getInstance().create(API.class);
-
-        api.getAll(SignInActivity.accessToken).enqueue(new Callback<WishAllResponse>() {
-            @Override
-            public void onResponse(Call<WishAllResponse> call, Response<WishAllResponse> response) {
-                if (response.isSuccessful()) {
-                    Log.d(TAG, "getWishAll() success!");
-                    List<WishAllResponse.WishResponseList> body = response.body().getWishResponseList();
-                    if (body != null) {
-                        Log.d(TAG, "body : " + body);
-                        dataList.addAll(body);
-                        itemAdapter.notifyDataSetChanged();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WishAllResponse> call, Throwable t) {
-                Log.e(TAG, "getWishAll() failure..", t);
-            }
-        });
+        mainItemAdapter = new MainItemAdapter(dataList, getBaseContext());
+        binding.rvMain.setAdapter(mainItemAdapter);
     }
 }

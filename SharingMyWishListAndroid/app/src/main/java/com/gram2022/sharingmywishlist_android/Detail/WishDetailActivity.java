@@ -1,26 +1,38 @@
 package com.gram2022.sharingmywishlist_android.Detail;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.gram2022.sharingmywishlist_android.Main.ItemAdapter;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.gram2022.sharingmywishlist_android.API.API;
+import com.gram2022.sharingmywishlist_android.API.APIProvider;
 import com.gram2022.sharingmywishlist_android.R;
+import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityDetailBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WishDetailActivity extends AppCompatActivity {
     final String TAG = WishDetailActivity.class.getSimpleName();
     ActivityDetailBinding binding;
     Toolbar toolbar_detail;
     ActionBar actionBar_detail;
+    ArrayList<WishCommentResponse.CommentResponseList> commentList;
+    DetailItemAdapter detailItemAdapter;
+    API api;
 
     int wishId;
     String title;
@@ -34,9 +46,87 @@ public class WishDetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initToolbar();
 
+        commentList = new ArrayList<>();
+
+        api = APIProvider.getInstance().create(API.class);
+
         initWishData();
         initDetails();
+        initItemAdapter();
+        getComment();
+        initPostCommentButton();
+        initSwipeRefreshLayout();
     }
+
+    private void initPostCommentButton() {
+        binding.btnDetailPostComment.setOnClickListener(v -> {
+            WishCommentRequest wishCommentRequest = new WishCommentRequest(wishId, binding.etDetailComment.getText().toString());
+            postComment(wishCommentRequest);
+        });
+    }
+
+    private void initItemAdapter() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
+        binding.rvDetail.setLayoutManager(linearLayoutManager);
+        detailItemAdapter = new DetailItemAdapter(commentList, getBaseContext());
+        binding.rvDetail.setAdapter(detailItemAdapter);
+    }
+
+    private void getComment() {
+        api.getComment(SignInActivity.accessToken, wishId).enqueue(new Callback<WishCommentResponse>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(@NonNull Call<WishCommentResponse> call, @NonNull Response<WishCommentResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "getComment() success!");
+                    assert response.body() != null;
+                    List<WishCommentResponse.CommentResponseList> body = response.body().getCommentResponseList();
+                    if (body != null) {
+                        Log.d(TAG, "body : " + body);
+                        commentList.addAll(body);
+                        detailItemAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<WishCommentResponse> call, @NonNull Throwable t) {
+            }
+        });
+    }
+
+    private void initSwipeRefreshLayout() {
+        binding.swipeRefreshLayoutDetail.setOnRefreshListener(() -> {
+            refreshComment();
+            binding.swipeRefreshLayoutDetail.setRefreshing(false);
+        });
+    }
+
+    private void postComment(WishCommentRequest wishCommentRequest) {
+        api.postComment(SignInActivity.accessToken, wishId, wishCommentRequest).enqueue(new Callback<Void>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "response Success!");
+                    refreshComment();
+                } else {
+                    Log.d(TAG, "response failure, " + response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+            }
+        });
+    }
+
+    private void refreshComment() {
+        detailItemAdapter.clearComment();
+        getComment();
+        detailItemAdapter.notifyDataSetChanged();
+    }
+
 
     private void initToolbar() {
         toolbar_detail = binding.toolbarDetail;
@@ -50,19 +140,14 @@ public class WishDetailActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_detail_back:
-                finish();
-                return true;
-            case R.id.menu_detail_edit:
-                // TODO
-                Toast.makeText(this, "EDIT!", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-            return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.menu_detail_back) {
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initDetails() {

@@ -1,17 +1,17 @@
 package com.gram2022.sharingmywishlist_android.Create;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
@@ -19,6 +19,8 @@ import com.gram2022.sharingmywishlist_android.Main.MainActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityCreateBinding;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,25 +43,23 @@ public class CreateActivity extends AppCompatActivity {
         initColorRadioButton();
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void initColorRadioButton() {
-        binding.radioGroupCreate.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int id) {
-                switch (id) {
-                    default:
-                    case R.id.radio_create_nor:
-                        color = getString(R.string.create_wish_nor);
-                        break;
-                    case R.id.radio_create_red:
-                        color = getString(R.string.create_wish_red);
-                        break;
-                    case R.id.radio_create_gre:
-                        color = getString(R.string.create_wish_gre);
-                        break;
-                    case R.id.radio_create_blu:
-                        color = getString(R.string.create_wish_blu);
-                        break;
-                }
+        binding.radioGroupCreate.setOnCheckedChangeListener((group, id) -> {
+            switch (id) {
+                default:
+                case R.id.radio_create_nor:
+                    color = getString(R.string.create_wish_nor);
+                    break;
+                case R.id.radio_create_red:
+                    color = getString(R.string.create_wish_red);
+                    break;
+                case R.id.radio_create_gre:
+                    color = getString(R.string.create_wish_gre);
+                    break;
+                case R.id.radio_create_blu:
+                    color = getString(R.string.create_wish_blu);
+                    break;
             }
         });
     }
@@ -76,6 +76,7 @@ public class CreateActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -85,14 +86,14 @@ public class CreateActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.menu_create_ok:
-                if (TextUtils.isEmpty(binding.etCreateTitle.getText().toString())) {
+                if (TextUtils.isEmpty(binding.etCreateTitle.getText())) {
                     binding.textInputLayoutCreateTitle.setHelperText(getString(R.string.create_title_formatError));
                     return false;
                 }
-                if (TextUtils.isEmpty(binding.etCreateContents.getText().toString())) {
+                if (TextUtils.isEmpty(binding.etCreateContents.getText())) {
                     binding.etCreateContents.setText("");
                 }
-                startCreate(binding.etCreateTitle.getText().toString(), binding.etCreateContents.getText().toString(), color);
+                startCreate(Objects.requireNonNull(binding.etCreateTitle.getText()).toString(), Objects.requireNonNull(binding.etCreateContents.getText()).toString(), color);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -104,7 +105,7 @@ public class CreateActivity extends AppCompatActivity {
         API api = APIProvider.getInstance().create(API.class);
         api.create(SignInActivity.accessToken, createRequest).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getBaseContext(), getString(R.string.create_response_success), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
@@ -114,7 +115,7 @@ public class CreateActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
                 Toast.makeText(getBaseContext(), getString(R.string.create_response_failure), Toast.LENGTH_SHORT).show();
             }
         });

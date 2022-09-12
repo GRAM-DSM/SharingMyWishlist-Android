@@ -1,13 +1,14 @@
 package com.gram2022.sharingmywishlist_android.SignIn;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.gram2022.sharingmywishlist_android.API.API;
@@ -24,7 +25,7 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     public static String accessToken;
-    final String TAG = this.getClass().getSimpleName();
+    final static String TAG = SignInActivity.class.getSimpleName();
     ActivitySignInBinding binding;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -42,9 +43,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void initGoToSignUpTextView() {
-        binding.tvSignInGoToSignUp.setOnClickListener(view -> {
-            startIntent(SignUpActivity.class);
-        });
+        binding.tvSignInGoToSignUp.setOnClickListener(view -> startIntent(SignUpActivity.class));
     }
 
     private void initSignInButton() {
@@ -103,16 +102,22 @@ public class SignInActivity extends AppCompatActivity {
         API api = APIProvider.getInstance().create(API.class);
         api.signIn(signInRequest).enqueue(new Callback<SignInResponse>() {
             @Override
-            public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+            public void onResponse(@NonNull Call<SignInResponse> call, @NonNull Response<SignInResponse> response) {
                 if (response.isSuccessful()) {
-                    accessToken = "Bearer " + response.body().getAccessToken();
-                    Log.d(TAG, "signIn succeed, userId : " + userId + ", accessToken : " + accessToken);
-                    startIntent(MainActivity.class);
+                    if (response.body() != null) {
+                        accessToken = "Bearer " + response.body().getAccessToken();
+                        Log.d(TAG, "signIn succeed, userId : " + userId + ", accessToken : " + accessToken);
+                        startIntent(MainActivity.class);
+                    } else {
+                        Log.d(TAG, "signIn body is null!");
+                    }
+                } else {
+                    Log.d(TAG, "onResponse not successful, error body is : " + response.errorBody());
                 }
             }
 
             @Override
-            public void onFailure(Call<SignInResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<SignInResponse> call, @NonNull Throwable t) {
                 Log.e(TAG, "signIn failed", t);
                 showSnackBar(getString(R.string.signIn_cannotSignIn));
                 clearSharedPreferences();
@@ -121,7 +126,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void clearSharedPreferences() {
-        sharedPreferences.edit().clear().commit();
+        sharedPreferences.edit().clear().apply();
     }
 
     private void showSnackBar(String text) {
@@ -129,11 +134,13 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private String getUserId() {
-        return binding.etSignInUserId.getText().toString().replace(" ", "");
+        Editable text = binding.etSignInUserId.getText();
+        return text == null ? "" : text.toString().replace(" ", "");
     }
 
     private String getPassword() {
-        return binding.etSignInPassword.getText().toString().replace(" ", "");
+        Editable text = binding.etSignInPassword.getText();
+        return text == null ? "" : text.toString().replace(" ", "");
     }
 
     private void startIntent(Class to) {

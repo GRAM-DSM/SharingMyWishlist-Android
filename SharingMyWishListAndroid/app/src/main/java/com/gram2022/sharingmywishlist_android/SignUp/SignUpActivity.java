@@ -1,20 +1,17 @@
 package com.gram2022.sharingmywishlist_android.SignUp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
-import com.gram2022.sharingmywishlist_android.Main.MainActivity;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivitySignUpBinding;
@@ -25,7 +22,7 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    final String TAG = this.getClass().getSimpleName();
+    final static String TAG =  SignUpActivity.class.getSimpleName();
     ActivitySignUpBinding binding;
 
     @Override
@@ -39,9 +36,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void initGoToSignInTextView() {
-        binding.tvSignUpGoToSignIn.setOnClickListener(view -> {
-            startIntent(SignInActivity.class);
-        });
+        binding.tvSignUpGoToSignIn.setOnClickListener(view -> startIntent(SignInActivity.class));
     }
 
     private void initSignUpButton() {
@@ -87,19 +82,23 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private String getUserId() {
-        return binding.etSignUpUserId.getText().toString().replace(" ", "");
+        Editable text = binding.etSignUpUserId.getText();
+        return text == null ? "" : text.toString().replace(" ", "");
     }
 
     private String getNickName() {
-        return binding.etSignUpNickName.getText().toString().replace(" ", "");
+        Editable text = binding.etSignUpNickName.getText();
+        return text == null ? "" : text.toString().replace(" ", "");
     }
 
     private String getPassword() {
-        return binding.etSignUpPassword.getText().toString().replace(" ", "");
+        Editable text = binding.etSignUpPassword.getText();
+        return text == null ? "" : text.toString().replace(" ", "");
     }
 
     private String getRepeatPassword() {
-        return binding.etSignUpRepeatPassword.getText().toString().replace(" ", "");
+        Editable text = binding.etSignUpRepeatPassword.getText();
+        return text == null ? "" : text.toString().replace(" ", "");
     }
 
     private void startSignUp(String userId, String nickName, String password) {
@@ -109,7 +108,7 @@ public class SignUpActivity extends AppCompatActivity {
         API api = APIProvider.getInstance().create(API.class);
         api.signUp(signUpRequest).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "signUp succeed, userId : " + userId);
                     startIntent(SignInActivity.class);
@@ -117,7 +116,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
                 Log.e(TAG, "signUp failed", t);
                 showSnackBar(getString(R.string.signIn_cannotSignUp));
             }
