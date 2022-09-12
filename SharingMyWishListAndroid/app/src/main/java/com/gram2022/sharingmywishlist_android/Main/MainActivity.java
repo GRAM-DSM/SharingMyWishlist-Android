@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     static final String TAG = MainActivity.class.getSimpleName();
     static ArrayList<WishAllResponse.WishResponseList> dataList;
-    static ItemAdapter itemAdapter;
+    static MainItemAdapter mainItemAdapter;
     ActivityMainBinding binding;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     if (body != null) {
                         Log.d(TAG, "body : " + body);
                         dataList.addAll(body);
-                        itemAdapter.notifyDataSetChanged();
+                        mainItemAdapter.notifyDataSetChanged();
                     }
                 }
             }
@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("NotifyDataSetChanged")
     private void initSwipeRefreshLayout() {
         binding.swipeRefreshLayoutMain.setOnRefreshListener(() -> {
-            itemAdapter.clearWish();
+            mainItemAdapter.clearWish();
             getWishAll();
-            itemAdapter.notifyDataSetChanged();
+            mainItemAdapter.notifyDataSetChanged();
             binding.swipeRefreshLayoutMain.setRefreshing(false);
         });
     }
@@ -133,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initItemAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
-        itemAdapter = new ItemAdapter(dataList, getBaseContext());
+        mainItemAdapter = new MainItemAdapter(dataList, getBaseContext());
 
         binding.rvMain.setLayoutManager(linearLayoutManager);
-        itemAdapter = new ItemAdapter(dataList, getBaseContext());
-        binding.rvMain.setAdapter(itemAdapter);
+        mainItemAdapter = new MainItemAdapter(dataList, getBaseContext());
+        binding.rvMain.setAdapter(mainItemAdapter);
     }
 }

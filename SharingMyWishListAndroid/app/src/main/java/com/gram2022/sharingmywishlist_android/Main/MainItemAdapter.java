@@ -26,15 +26,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+public class MainItemAdapter extends RecyclerView.Adapter<MainItemAdapter.ViewHolder> {
 
-    final String TAG = this.getClass().getSimpleName();
+    static final String TAG = MainItemAdapter.class.getSimpleName();
 
     ArrayList<WishAllResponse.WishResponseList> dataList;
 
     Context context;
 
-    public ItemAdapter(ArrayList<WishAllResponse.WishResponseList> dataList, Context context) {
+    public MainItemAdapter(ArrayList<WishAllResponse.WishResponseList> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
         Log.d(TAG, "ItemAdapter has called");

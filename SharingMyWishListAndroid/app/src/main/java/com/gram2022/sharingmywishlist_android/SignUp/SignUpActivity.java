@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    final String TAG = this.getClass().getSimpleName();
+    final static String TAG =  SignUpActivity.class.getSimpleName();
     ActivitySignUpBinding binding;
 
     @Override

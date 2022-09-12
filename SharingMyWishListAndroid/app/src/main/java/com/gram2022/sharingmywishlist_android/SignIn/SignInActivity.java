@@ -25,7 +25,7 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     public static String accessToken;
-    final String TAG = this.getClass().getSimpleName();
+    final static String TAG = SignInActivity.class.getSimpleName();
     ActivitySignInBinding binding;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
