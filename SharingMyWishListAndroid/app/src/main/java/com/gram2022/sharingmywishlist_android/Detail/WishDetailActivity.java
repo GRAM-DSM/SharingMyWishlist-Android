@@ -10,15 +10,29 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.gram2022.sharingmywishlist_android.API.API;
+import com.gram2022.sharingmywishlist_android.API.APIProvider;
+import com.gram2022.sharingmywishlist_android.Main.MainItemAdapter;
 import com.gram2022.sharingmywishlist_android.R;
+import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityDetailBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WishDetailActivity extends AppCompatActivity {
     final String TAG = WishDetailActivity.class.getSimpleName();
     ActivityDetailBinding binding;
     Toolbar toolbar_detail;
     ActionBar actionBar_detail;
+    ArrayList<WishCommentResponse.CommentResponseList> commentList;
+    DetailItemAdapter detailItemAdapter;
 
     int wishId;
     String title;
@@ -32,8 +46,45 @@ public class WishDetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initToolbar();
 
+        commentList = new ArrayList<>();
+
         initWishData();
         initDetails();
+        initItemAdapter();
+        getComment();
+    }
+
+    private void initItemAdapter() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
+        binding.rvDetail.setLayoutManager(linearLayoutManager);
+        detailItemAdapter = new DetailItemAdapter(commentList, getBaseContext());
+        binding.rvDetail.setAdapter(detailItemAdapter);
+    }
+
+    private void getComment() {
+        API api = APIProvider.getInstance().create(API.class);
+
+        api.getComment(SignInActivity.accessToken, wishId).enqueue(new Callback<WishCommentResponse>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(@NonNull Call<WishCommentResponse> call, @NonNull Response<WishCommentResponse> response) {
+                if (response.isSuccessful()){
+                    Log.d(TAG, "getComment() success!");
+                    assert response.body() != null;
+                    List<WishCommentResponse.CommentResponseList> body = response.body().getCommentResponseList();
+                    if (body != null) {
+                        Log.d(TAG, "body : " + body);
+                        commentList.addAll(body);
+                        detailItemAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<WishCommentResponse> call, @NonNull Throwable t) {
+
+            }
+        });
     }
 
     private void initToolbar() {

@@ -37,7 +37,7 @@ public class MainItemAdapter extends RecyclerView.Adapter<MainItemAdapter.ViewHo
     public MainItemAdapter(ArrayList<WishAllResponse.WishResponseList> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
-        Log.d(TAG, "ItemAdapter has called");
+        Log.d(TAG, "MainItemAdapter has called");
     }
 
     @NonNull

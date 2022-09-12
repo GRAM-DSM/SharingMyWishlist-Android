@@ -1,10 +1,24 @@
 package com.gram2022.sharingmywishlist_android.Detail;
 
-public class WishCommentResponse {
-    CommentResponseList commentResponseList;
+import java.util.List;
 
-    private class CommentResponseList {
+public class WishCommentResponse {
+    List<CommentResponseList> commentResponseList;
+
+    public List<CommentResponseList> getCommentResponseList() {
+        return commentResponseList;
+    }
+
+    public class CommentResponseList {
         int id;
         String comment;
+
+        public int getId() {
+            return id;
+        }
+
+        public String getComment() {
+            return comment;
+        }
     }
 }
