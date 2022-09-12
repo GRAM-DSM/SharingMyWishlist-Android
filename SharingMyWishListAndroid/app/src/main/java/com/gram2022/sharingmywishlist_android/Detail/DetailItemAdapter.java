@@ -43,10 +43,6 @@ public class DetailItemAdapter extends RecyclerView.Adapter<DetailItemAdapter.Vi
         return commentList.size();
     }
 
-    private void deleteComment(int id) {
-
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         RvDetailCommentItemBinding itemBinding;

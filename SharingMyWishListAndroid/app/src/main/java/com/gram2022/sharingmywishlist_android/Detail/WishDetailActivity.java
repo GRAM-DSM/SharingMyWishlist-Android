@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
-import com.gram2022.sharingmywishlist_android.Main.MainItemAdapter;
 import com.gram2022.sharingmywishlist_android.R;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInActivity;
 import com.gram2022.sharingmywishlist_android.databinding.ActivityDetailBinding;
@@ -33,6 +32,7 @@ public class WishDetailActivity extends AppCompatActivity {
     ActionBar actionBar_detail;
     ArrayList<WishCommentResponse.CommentResponseList> commentList;
     DetailItemAdapter detailItemAdapter;
+    API api;
 
     int wishId;
     String title;
@@ -48,6 +48,8 @@ public class WishDetailActivity extends AppCompatActivity {
 
         commentList = new ArrayList<>();
 
+        api = APIProvider.getInstance().create(API.class);
+
         initWishData();
         initDetails();
         initItemAdapter();
@@ -62,13 +64,11 @@ public class WishDetailActivity extends AppCompatActivity {
     }
 
     private void getComment() {
-        API api = APIProvider.getInstance().create(API.class);
-
         api.getComment(SignInActivity.accessToken, wishId).enqueue(new Callback<WishCommentResponse>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<WishCommentResponse> call, @NonNull Response<WishCommentResponse> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Log.d(TAG, "getComment() success!");
                     assert response.body() != null;
                     List<WishCommentResponse.CommentResponseList> body = response.body().getCommentResponseList();
@@ -85,6 +85,10 @@ public class WishDetailActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void postComment() {
+
     }
 
     private void initToolbar() {
