@@ -78,7 +78,7 @@
         android:layout_height="48dp"
         android:layout_margin="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/rv_detail"
+        app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayout_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_detail_commentInfo">
@@ -95,7 +95,7 @@
                 android:id="@+id/et_detail_comment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/signUp_userId"
+                android:hint="@string/detail_comment"
                 android:inputType="text"
                 android:textSize="14sp" />
 
@@ -110,8 +110,8 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_detail"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -120,7 +120,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout_detail_writeComment" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_detail_writeComment">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

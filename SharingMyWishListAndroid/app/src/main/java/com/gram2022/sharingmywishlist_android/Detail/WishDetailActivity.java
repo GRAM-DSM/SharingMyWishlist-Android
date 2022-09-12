@@ -55,6 +55,7 @@ public class WishDetailActivity extends AppCompatActivity {
         initItemAdapter();
         getComment();
         initPostCommentButton();
+        initSwipeRefreshLayout();
     }
 
     private void initPostCommentButton() {
@@ -90,17 +91,25 @@ public class WishDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<WishCommentResponse> call, @NonNull Throwable t) {
-
             }
+        });
+    }
+
+    private void initSwipeRefreshLayout() {
+        binding.swipeRefreshLayoutDetail.setOnRefreshListener(() -> {
+            refreshComment();
+            binding.swipeRefreshLayoutDetail.setRefreshing(false);
         });
     }
 
     private void postComment(WishCommentRequest wishCommentRequest) {
         api.postComment(SignInActivity.accessToken, wishId, wishCommentRequest).enqueue(new Callback<Void>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "response Success!");
+                    refreshComment();
                 } else {
                     Log.d(TAG, "response failure, " + response.errorBody());
                 }
@@ -110,8 +119,14 @@ public class WishDetailActivity extends AppCompatActivity {
             public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
             }
         });
-
     }
+
+    private void refreshComment() {
+        detailItemAdapter.clearComment();
+        getComment();
+        detailItemAdapter.notifyDataSetChanged();
+    }
+
 
     private void initToolbar() {
         toolbar_detail = binding.toolbarDetail;

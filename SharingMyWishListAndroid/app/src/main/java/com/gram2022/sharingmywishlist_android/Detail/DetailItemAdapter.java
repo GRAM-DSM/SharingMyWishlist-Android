@@ -38,6 +38,10 @@ public class DetailItemAdapter extends RecyclerView.Adapter<DetailItemAdapter.Vi
         holder.bindItem(commentList.get(position));
     }
 
+    public void clearComment() {
+        commentList.clear();
+    }
+
     @Override
     public int getItemCount() {
         return commentList.size();

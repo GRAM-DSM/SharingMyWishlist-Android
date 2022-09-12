@@ -39,4 +39,5 @@
     <string name="create_wish_blu">wish-blu</string>
 
     <string name="detail_writeComment">작성</string>
+    <string name="detail_comment">댓글</string>
 </resources>
