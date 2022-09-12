@@ -54,6 +54,14 @@ public class WishDetailActivity extends AppCompatActivity {
         initDetails();
         initItemAdapter();
         getComment();
+        initPostCommentButton();
+    }
+
+    private void initPostCommentButton() {
+        binding.btnDetailPostComment.setOnClickListener(v -> {
+            WishCommentRequest wishCommentRequest = new WishCommentRequest(wishId, binding.etDetailComment.getText().toString());
+            postComment(wishCommentRequest);
+        });
     }
 
     private void initItemAdapter() {
@@ -87,7 +95,21 @@ public class WishDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void postComment() {
+    private void postComment(WishCommentRequest wishCommentRequest) {
+        api.postComment(SignInActivity.accessToken, wishId, wishCommentRequest).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "response Success!");
+                } else {
+                    Log.d(TAG, "response failure, " + response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+            }
+        });
 
     }
 

@@ -44,10 +44,10 @@
                 android:gravity="center_vertical"
                 android:maxLength="30"
                 android:maxLines="1"
-                tools:text="Title Here"
                 android:textColor="@color/black"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Title Here" />
 
             <TextView
                 android:id="@+id/tv_detail_writer"
@@ -55,9 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:maxLines="1"
-                tools:text="Writer Here"
                 android:textColor="@color/light_gray"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="Writer Here" />
 
             <TextView
                 android:id="@+id/tv_rvMainItem_contents"
@@ -66,9 +66,9 @@
                 android:ellipsize="end"
                 android:maxLength="150"
                 android:maxLines="5"
-                tools:text="Contents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents Here"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="Contents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents Here" />
         </LinearLayout>
     </LinearLayout>
 
@@ -83,18 +83,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_detail_commentInfo">
 
-        <EditText
-            android:id="@+id/et_detail_comment"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_detail_comment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5" />
+            android:layout_weight="5"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/light_red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_detail_comment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/signUp_userId"
+                android:inputType="text"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_detail_addComment"
+            android:id="@+id/btn_detail_postComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/detail_writeComment"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="@string/detail_writeComment" />
 
     </LinearLayout>
 

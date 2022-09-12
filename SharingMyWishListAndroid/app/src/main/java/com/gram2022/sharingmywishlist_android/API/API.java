@@ -1,8 +1,8 @@
 package com.gram2022.sharingmywishlist_android.API;
 
 import com.gram2022.sharingmywishlist_android.Create.CreateRequest;
+import com.gram2022.sharingmywishlist_android.Detail.WishCommentRequest;
 import com.gram2022.sharingmywishlist_android.Detail.WishCommentResponse;
-import com.gram2022.sharingmywishlist_android.Detail.WishDetailResponse;
 import com.gram2022.sharingmywishlist_android.Main.WishAllResponse;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInRequest;
 import com.gram2022.sharingmywishlist_android.SignIn.SignInResponse;
@@ -39,4 +39,7 @@ public interface API {
 
     @GET("/comment/{id}")
     Call<WishCommentResponse> getComment(@Header("Authorization") String accessToken, @Path("id") int id);
+
+    @POST("/comment/{id}")
+    Call<Void> postComment(@Header("Authorization") String accessToken, @Path("id") int id, @Body WishCommentRequest wishCommentRequest);
 }
