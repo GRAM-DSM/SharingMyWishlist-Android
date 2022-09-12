@@ -133,8 +133,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initItemAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
-        mainItemAdapter = new MainItemAdapter(dataList, getBaseContext());
-
         binding.rvMain.setLayoutManager(linearLayoutManager);
         mainItemAdapter = new MainItemAdapter(dataList, getBaseContext());
         binding.rvMain.setAdapter(mainItemAdapter);
