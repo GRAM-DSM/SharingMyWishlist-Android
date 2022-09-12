@@ -51,13 +51,11 @@ public class WishDetailActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_detail_back:
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.menu_detail_back) {
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initDetails() {
