@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLength="150"
-                android:maxLines="5"
+                android:maxLines="4"
                 tools:text="Contents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents HereContents Here"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
