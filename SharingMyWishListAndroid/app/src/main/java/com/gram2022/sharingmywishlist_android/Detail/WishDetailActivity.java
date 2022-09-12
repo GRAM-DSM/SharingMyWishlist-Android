@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
 import com.gram2022.sharingmywishlist_android.R;
@@ -20,6 +21,7 @@ import com.gram2022.sharingmywishlist_android.databinding.ActivityDetailBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,9 +62,17 @@ public class WishDetailActivity extends AppCompatActivity {
 
     private void initPostCommentButton() {
         binding.btnDetailPostComment.setOnClickListener(v -> {
-            WishCommentRequest wishCommentRequest = new WishCommentRequest(wishId, binding.etDetailComment.getText().toString());
-            postComment(wishCommentRequest);
+            if (!binding.btnDetailPostComment.getText().toString().isEmpty()) {
+                WishCommentRequest wishCommentRequest = new WishCommentRequest(wishId, Objects.requireNonNull(binding.etDetailComment.getText()).toString());
+                postComment(wishCommentRequest);
+            } else {
+                showSnackBar(getString(R.string.detail_comment_formatError));
+            }
         });
+    }
+
+    private void showSnackBar(String text) {
+        Snackbar.make(binding.getRoot(), text, Snackbar.LENGTH_SHORT).show();
     }
 
     private void initItemAdapter() {
@@ -121,6 +131,7 @@ public class WishDetailActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void refreshComment() {
         detailItemAdapter.clearComment();
         getComment();

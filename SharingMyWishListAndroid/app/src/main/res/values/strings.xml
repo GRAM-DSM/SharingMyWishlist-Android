@@ -40,4 +40,5 @@
 
     <string name="detail_writeComment">작성</string>
     <string name="detail_comment">댓글</string>
+    <string name="detail_comment_formatError">댓글의 공백은 허용되지 않습니다</string>
 </resources>
