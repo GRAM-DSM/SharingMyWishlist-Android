@@ -67,14 +67,13 @@ public class WishDetailActivity extends AppCompatActivity {
                 WishCommentRequest wishCommentRequest = new WishCommentRequest(wishId, Objects.requireNonNull(binding.etDetailComment.getText()).toString());
                 postComment(wishCommentRequest);
                 checkTextFormat();
+                binding.etDetailComment.setText("");
             }
         });
     }
 
     private boolean checkTextFormat() {
-        Log.d(TAG, "checkTextFormat: ");
         String errorMessage = getString(R.string.detail_comment_formatError);
-
         String detailComment = getDetailComment();
 
         binding.textInputLayoutDetailComment.setError(null);
