@@ -18,10 +18,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:src="@drawable/logo"
-            android:contentDescription="@string/logo_description" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/logo_description"
+            android:src="@drawable/logo" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_signIn_userId"
