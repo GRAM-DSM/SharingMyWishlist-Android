@@ -55,26 +55,26 @@ public class SignUpActivity extends AppCompatActivity {
         String password = getPassword();
         String repeatPassword = getRepeatPassword();
 
-        binding.textInputLayoutSignUpUserId.setHelperText(null);
-        binding.textInputLayoutSignUpNickname.setHelperText(null);
-        binding.textInputLayoutSignUpPassword.setHelperText(null);
-        binding.textInputLayoutSignUpRepeatPassword.setHelperText(null);
+        binding.textInputLayoutSignUpUserId.setError(null);
+        binding.textInputLayoutSignUpNickname.setError(null);
+        binding.textInputLayoutSignUpPassword.setError(null);
+        binding.textInputLayoutSignUpRepeatPassword.setError(null);
 
         if (TextUtils.isEmpty(userId)) {
-            binding.textInputLayoutSignUpUserId.setHelperText(errorMessage);
+            binding.textInputLayoutSignUpUserId.setError(errorMessage);
         }
         if (TextUtils.isEmpty(nickName)) {
-            binding.textInputLayoutSignUpNickname.setHelperText(errorMessage);
+            binding.textInputLayoutSignUpNickname.setError(errorMessage);
         }
         if (TextUtils.isEmpty(password)) {
-            binding.textInputLayoutSignUpPassword.setHelperText(errorMessage);
+            binding.textInputLayoutSignUpPassword.setError(errorMessage);
         }
         if (TextUtils.isEmpty(repeatPassword)) {
-            binding.textInputLayoutSignUpRepeatPassword.setHelperText(errorMessage);
+            binding.textInputLayoutSignUpRepeatPassword.setError(errorMessage);
         }
         if (!password.equals(repeatPassword)) {
-            binding.textInputLayoutSignUpPassword.setHelperText(getString(R.string.signUp_repeatPasswordError));
-            binding.textInputLayoutSignUpRepeatPassword.setHelperText(getString(R.string.signUp_repeatPasswordError));
+            binding.textInputLayoutSignUpPassword.setError(getString(R.string.signUp_repeatPasswordError));
+            binding.textInputLayoutSignUpRepeatPassword.setError(getString(R.string.signUp_repeatPasswordError));
         } else {
             return true;
         }

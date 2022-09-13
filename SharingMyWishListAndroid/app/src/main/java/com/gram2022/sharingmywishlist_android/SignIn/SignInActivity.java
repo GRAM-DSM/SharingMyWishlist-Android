@@ -67,14 +67,14 @@ public class SignInActivity extends AppCompatActivity {
         String userId = getUserId();
         String password = getPassword();
 
-        binding.textInputLayoutSignInUserId.setHelperText(null);
-        binding.textInputLayoutSignInPassword.setHelperText(null);
+        binding.textInputLayoutSignInUserId.setError(null);
+        binding.textInputLayoutSignInPassword.setError(null);
 
         if (TextUtils.isEmpty(userId)) {
-            binding.textInputLayoutSignInUserId.setHelperText(errorMessage);
+            binding.textInputLayoutSignInUserId.setError(errorMessage);
         }
         if (TextUtils.isEmpty(password)) {
-            binding.textInputLayoutSignInPassword.setHelperText(errorMessage);
+            binding.textInputLayoutSignInPassword.setError(errorMessage);
         } else {
             return true;
         }
