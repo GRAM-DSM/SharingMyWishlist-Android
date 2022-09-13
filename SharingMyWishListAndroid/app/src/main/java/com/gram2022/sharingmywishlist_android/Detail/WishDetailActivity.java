@@ -2,6 +2,8 @@ package com.gram2022.sharingmywishlist_android.Detail;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.gram2022.sharingmywishlist_android.API.API;
 import com.gram2022.sharingmywishlist_android.API.APIProvider;
 import com.gram2022.sharingmywishlist_android.R;
@@ -62,17 +63,28 @@ public class WishDetailActivity extends AppCompatActivity {
 
     private void initPostCommentButton() {
         binding.btnDetailPostComment.setOnClickListener(v -> {
-            if (binding.btnDetailPostComment.getText().toString().isEmpty()) {
-                showSnackBar(getString(R.string.detail_comment_formatError));
-            } else {
+            if (checkTextFormat()) {
                 WishCommentRequest wishCommentRequest = new WishCommentRequest(wishId, Objects.requireNonNull(binding.etDetailComment.getText()).toString());
                 postComment(wishCommentRequest);
+                checkTextFormat();
             }
         });
     }
 
-    private void showSnackBar(String text) {
-        Snackbar.make(binding.getRoot(), text, Snackbar.LENGTH_SHORT).show();
+    private boolean checkTextFormat() {
+        Log.d(TAG, "checkTextFormat: ");
+        String errorMessage = getString(R.string.detail_comment_formatError);
+
+        String detailComment = getDetailComment();
+
+        binding.textInputLayoutDetailComment.setError(null);
+
+        if (TextUtils.isEmpty(detailComment)) {
+            binding.textInputLayoutDetailComment.setError(errorMessage);
+        } else {
+            return true;
+        }
+        return false;
     }
 
     private void initItemAdapter() {
@@ -176,5 +188,10 @@ public class WishDetailActivity extends AppCompatActivity {
         Log.d(TAG, "title : " + title);
         Log.d(TAG, "writer : " + writer);
         Log.d(TAG, "contents : " + contents);
+    }
+
+    private String getDetailComment() {
+        Editable text = binding.etDetailComment.getText();
+        return text == null ? "" : text.toString().replace(" ", "");
     }
 }
