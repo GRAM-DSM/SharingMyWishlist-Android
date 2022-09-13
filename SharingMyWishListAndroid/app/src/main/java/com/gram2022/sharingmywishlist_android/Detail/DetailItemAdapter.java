@@ -66,7 +66,7 @@ public class DetailItemAdapter extends RecyclerView.Adapter<DetailItemAdapter.Vi
 
             itemBinding.tvRvDetailCommentComment.setText(comment.getComment());
             itemBinding.tvRvDetailCommentWriter.setText(comment.getNickName());
-            itemBinding.tvRvDetailCommentCreatedAt.setText(comment.getCreatedAt().substring(0, 10));
+            itemBinding.tvRvDetailCommentCreatedAt.setText(comment.getCreatedAt().substring(0, 19));
         }
     }
 }
