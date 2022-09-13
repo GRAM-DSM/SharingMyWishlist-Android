@@ -14,7 +14,7 @@
         android:ellipsize="end"
         android:maxLength="150"
         android:maxLines="5"
-        android:textColor="@color/black"
+        android:textColor="@color/light_gray"
         android:textSize="18sp"
         tools:text="Writer" />
 
@@ -30,4 +30,9 @@
         android:textSize="16sp"
         tools:text="Comment HereComment HereComment HereComment HereComment HereComment HereComment HereComment HereComment HereComment HereComment HereComment HereComment Here" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/light_gray" />
 </LinearLayout>

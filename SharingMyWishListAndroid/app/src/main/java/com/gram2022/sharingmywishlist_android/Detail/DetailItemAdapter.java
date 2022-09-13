@@ -63,6 +63,7 @@ public class DetailItemAdapter extends RecyclerView.Adapter<DetailItemAdapter.Vi
             Log.d(TAG, "comment : " + comment.getComment());
 
             itemBinding.tvRvDetailCommentComment.setText(comment.getComment());
+            itemBinding.tvRvDetailCommentWriter.setText(comment.getNickName());
         }
     }
 }
