@@ -15,8 +15,8 @@ public class WishCommentResponse {
         String nickName;
         String createdAt;
 
-        public void setCreatedAt(String createdAt) {
-            this.createdAt = createdAt;
+        public String getCreatedAt() {
+            return createdAt;
         }
 
         public int getId() {

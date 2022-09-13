@@ -60,10 +60,13 @@ public class DetailItemAdapter extends RecyclerView.Adapter<DetailItemAdapter.Vi
 
             Log.d(TAG, "==========");
             Log.d(TAG, "id : " + comment.getId());
+            Log.d(TAG, "nickName : " + comment.getNickName());
             Log.d(TAG, "comment : " + comment.getComment());
+            Log.d(TAG, "createdAt : " + comment.getCreatedAt());
 
             itemBinding.tvRvDetailCommentComment.setText(comment.getComment());
             itemBinding.tvRvDetailCommentWriter.setText(comment.getNickName());
+            itemBinding.tvRvDetailCommentCreatedAt.setText(comment.getCreatedAt().substring(0, 10));
         }
     }
 }

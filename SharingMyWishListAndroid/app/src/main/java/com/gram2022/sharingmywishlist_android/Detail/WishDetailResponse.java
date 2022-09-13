@@ -7,7 +7,6 @@ public class WishDetailResponse {
     String writer;
     boolean clear;
     String color;
-    String createdAt;
 
     public int getId() {
         return id;
@@ -31,9 +30,5 @@ public class WishDetailResponse {
 
     public String getColor() {
         return color;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
     }
 }

@@ -62,11 +62,11 @@ public class WishDetailActivity extends AppCompatActivity {
 
     private void initPostCommentButton() {
         binding.btnDetailPostComment.setOnClickListener(v -> {
-            if (!binding.btnDetailPostComment.getText().toString().isEmpty()) {
+            if (binding.btnDetailPostComment.getText().toString().isEmpty()) {
+                showSnackBar(getString(R.string.detail_comment_formatError));
+            } else {
                 WishCommentRequest wishCommentRequest = new WishCommentRequest(wishId, Objects.requireNonNull(binding.etDetailComment.getText()).toString());
                 postComment(wishCommentRequest);
-            } else {
-                showSnackBar(getString(R.string.detail_comment_formatError));
             }
         });
     }

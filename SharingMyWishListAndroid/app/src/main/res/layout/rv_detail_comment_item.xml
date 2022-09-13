@@ -6,17 +6,35 @@
     android:layout_margin="4dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_rvDetailComment_writer"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:ellipsize="end"
-        android:maxLength="150"
-        android:maxLines="5"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp"
-        tools:text="Writer" />
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/tv_rvDetailComment_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:maxLength="150"
+            android:maxLines="5"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp"
+            tools:text="Writer" />
+
+        <TextView
+            android:id="@+id/tv_rvDetailComment_createdAt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="150"
+            android:maxLines="5"
+            android:textColor="@color/light_gray"
+            android:textSize="14sp"
+            tools:text="createdAt" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_rvDetailComment_comment"
