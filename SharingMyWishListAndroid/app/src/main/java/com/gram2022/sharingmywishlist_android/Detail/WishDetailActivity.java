@@ -41,6 +41,7 @@ public class WishDetailActivity extends AppCompatActivity {
     String title;
     String writer;
     String contents;
+    String createdAt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,6 +177,7 @@ public class WishDetailActivity extends AppCompatActivity {
         binding.tvDetailTitle.setText(title);
         binding.tvDetailWriter.setText(writer);
         binding.tvRvMainItemContents.setText(contents);
+        binding.tvDetailCreatedAt.setText(createdAt);
     }
 
     private void initWishData() {
@@ -183,10 +185,12 @@ public class WishDetailActivity extends AppCompatActivity {
         title = getIntent().getStringExtra("title");
         writer = getIntent().getStringExtra("writer");
         contents = getIntent().getStringExtra("contents");
+        createdAt = getIntent().getStringExtra("createdAt").substring(0, 10);
         Log.d(TAG, "wishId : " + wishId);
         Log.d(TAG, "title : " + title);
         Log.d(TAG, "writer : " + writer);
         Log.d(TAG, "contents : " + contents);
+        Log.d(TAG, "createdAt : " + createdAt);
     }
 
     private String getDetailComment() {

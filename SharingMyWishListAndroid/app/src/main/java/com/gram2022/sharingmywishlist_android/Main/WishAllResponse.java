@@ -16,6 +16,11 @@ public class WishAllResponse {
         String writer;
         boolean clear;
         String color;
+        String createdAt;
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
 
         public int getId() {
             return id;

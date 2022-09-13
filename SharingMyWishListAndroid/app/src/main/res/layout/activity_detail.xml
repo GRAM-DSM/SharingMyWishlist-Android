@@ -35,19 +35,38 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <TextView
-                android:id="@+id/tv_detail_title"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLength="30"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:text="Title Here" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="Title Here" />
+
+                <TextView
+                    android:id="@+id/tv_detail_createdAt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLength="150"
+                    android:maxLines="5"
+                    android:textColor="@color/light_gray"
+                    android:textSize="14sp"
+                    tools:text="createdAt" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_detail_writer"
@@ -75,7 +94,7 @@
     <LinearLayout
         android:id="@+id/linearLayout_detail_writeComment"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="48dp"
         android:layout_margin="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayout_detail"
@@ -87,8 +106,8 @@
             android:id="@+id/textInputLayout_detail_comment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:errorEnabled="true"
             android:layout_weight="5"
+            app:errorEnabled="true"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/light_red">
 

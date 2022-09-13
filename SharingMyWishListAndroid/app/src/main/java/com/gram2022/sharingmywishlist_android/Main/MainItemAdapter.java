@@ -161,6 +161,7 @@ public class MainItemAdapter extends RecyclerView.Adapter<MainItemAdapter.ViewHo
                 wishDetailIntent.putExtra("title", item.getTitle());
                 wishDetailIntent.putExtra("writer", item.getWriter());
                 wishDetailIntent.putExtra("contents", item.getContents());
+                wishDetailIntent.putExtra("createdAt", item.getCreatedAt());
                 context.startActivity(wishDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             });
         }
